@@ -1,25 +1,41 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
+
+import { login } from 'redux/auth/authActions';
 
 // Components
 import Navbar from 'layout/navbar/Navbar';
+import Modal from 'layout/modal/Modal';
+import LoginForm from 'layout/loginForm/LoginForm';
 
 // Pages
 import Homepage from 'pages/homepage/Homepage';
 
 // Styles
 import GlobalStyles from 'styles/GlobalStyles';
+import theme from 'styles/theme';
 
-const App = () => {
+const App = ({ login }) => {
+  useEffect(() => {
+    login();
+  }, [login]);
   return (
     <Fragment>
-      <GlobalStyles />
-      <Navbar />
-      <Switch>
-        <Route exact path='/' component={Homepage} />
-      </Switch>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <Navbar />
+        <Switch>
+          <Route exact path='/' component={Homepage} />
+        </Switch>
+        <Modal render={() => <LoginForm />} />
+      </ThemeProvider>
     </Fragment>
   );
 };
 
-export default App;
+export default connect(
+  null,
+  { login }
+)(App);

@@ -1,9 +1,10 @@
-export default {
+const theme = {
   // COLORS
   colorPrimary: '#374785',
   colorPrimaryDark: '#24305E',
-  colorSecondary: '#F8E9A1',
-  colorTertiary: '#F76C6C',
+  colorSecondary: '#F76C6C',
+  colorSecondaryDark: '#f54c4c',
+  colorTertiary: '#F8E9A1',
 
   colorGreyDark: '#474B4F',
   colorGreyLight: '#f1f1f1',
@@ -16,3 +17,5 @@ export default {
   shadowLight1: '0 3px 1.7rem rgba(237, 234, 229, .6)',
   shadowLight2: '0 2px .5rem rgba(237, 234, 229, .6)'
 };
+
+export default theme;

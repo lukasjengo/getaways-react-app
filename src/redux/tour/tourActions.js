@@ -10,9 +10,7 @@ import {
 export const getTours = () => async dispatch => {
   dispatch({ type: GET_TOURS_REQUEST });
   try {
-    const res = await axios.get(
-      'https://getaways-api-jengo.herokuapp.com/api/v1/tours/'
-    );
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/tours`);
     const data = res.data.data.data;
     dispatch({
       type: GET_TOURS_SUCCESS,
@@ -21,9 +19,8 @@ export const getTours = () => async dispatch => {
   } catch (err) {
     dispatch({
       type: GET_TOURS_FAILURE,
-      payload: err.message
+      payload: err.response.data.message
     });
-    console.log(err.message);
   }
 };
 

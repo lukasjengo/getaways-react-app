@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import variables from 'styles/variables';
 
 const GlobalStyles = createGlobalStyle`
   *,
@@ -19,8 +18,8 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
     line-height: 1.7;
-    color: ${variables.colorGreyDark};
-    background-color: ${variables.colorWhiteBg};
+    color: ${props => props.theme.colorGreyDark};
+    background-color: ${props => props.theme.colorWhiteBg};
   }
 
   a {
@@ -28,16 +27,15 @@ const GlobalStyles = createGlobalStyle`
     text-decoration: none;
   }
 
-  /* button {
+  button {
+    font: inherit;
     padding: 0;
     border: none;
     border-radius: 3px;
-    font: inherit;
-    color: inherit;
     background-color: transparent;
     outline: none;
     cursor: pointer;
-  } */
+  }
 
 `;
 
