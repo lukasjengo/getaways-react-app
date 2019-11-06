@@ -6,9 +6,8 @@ import { ThemeProvider } from 'styled-components';
 import { login } from 'redux/auth/authActions';
 
 // Components
-import Navbar from 'layout/navbar/Navbar';
-import Modal from 'layout/modal/Modal';
-import LoginForm from 'layout/loginForm/LoginForm';
+import Navbar from 'components/navbar/Navbar';
+import Modal from 'components/modal/Modal';
 
 // Pages
 import Homepage from 'pages/homepage/Homepage';
@@ -29,7 +28,7 @@ const App = ({ login }) => {
         <Switch>
           <Route exact path='/' component={Homepage} />
         </Switch>
-        <Modal render={() => <LoginForm />} />
+        <Modal />
       </ThemeProvider>
     </Fragment>
   );

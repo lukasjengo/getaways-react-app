@@ -34,3 +34,16 @@ export const login = formData => async dispatch => {
     dispatch({ type: LOGIN_FAILURE, payload: err.response.data.message });
   }
 };
+
+export const register = formData => async dispatch => {
+  dispatch({ type: REGISTER_REQUEST });
+  try {
+    const res = await axios.post(
+      `${process.env.REACT_APP_API_URL}/users/signup`,
+      formData
+    );
+    dispatch({ type: REGISTER_SUCCESS, payload: res.data.data.user });
+  } catch (err) {
+    dispatch({ type: REGISTER_FAILURE, payload: err.response.data.message });
+  }
+};

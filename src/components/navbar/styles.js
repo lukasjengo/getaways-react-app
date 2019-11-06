@@ -32,12 +32,35 @@ export const LogoWrapperLink = styled(Link)`
   }
 `;
 
-export const StyledUl = styled.ul`
+export const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
-  list-style: none;
 
-  li:not(:last-child) {
-    margin-right: 2rem;
+  img {
+    border-radius: 50%;
+    width: 4rem;
+  }
+
+  span {
+    margin-left: 0.5rem;
+  }
+`;
+
+export const StyledButton = styled.button`
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  transition: all 0.2s;
+
+  span {
+    margin-right: 0.5rem;
+  }
+
+  &:hover {
+    color: ${props => props.theme.colorSecondary};
+
+    svg {
+      fill: ${props => props.theme.colorSecondary};
+    }
   }
 `;

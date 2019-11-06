@@ -3,9 +3,12 @@ import { connect } from 'react-redux';
 
 import { hideModal } from 'redux/modal/modalActions';
 
+import LoginForm from 'components/authForms/LoginForm';
+import RegisterForm from 'components/authForms/RegisterForm';
+
 import { ModalOverlay } from './styles';
 
-const Modal = ({ render, modalType, hideModal }) => {
+const Modal = ({ modalType, hideModal }) => {
   const node = useRef(null);
 
   useEffect(() => {
@@ -26,10 +29,15 @@ const Modal = ({ render, modalType, hideModal }) => {
       hideModal();
     }
   };
-  if (modalType === null) {
-    return null;
-  }
-  return <ModalOverlay ref={node}>{render()}</ModalOverlay>;
+
+  if (modalType === null) return null;
+
+  return (
+    <ModalOverlay ref={node}>
+      {modalType === 'login' && <LoginForm />}
+      {modalType === 'register' && <RegisterForm />}
+    </ModalOverlay>
+  );
 };
 
 const mapStateToProps = state => ({

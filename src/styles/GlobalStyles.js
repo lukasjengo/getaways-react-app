@@ -29,11 +29,8 @@ const GlobalStyles = createGlobalStyle`
 
   button {
     font: inherit;
-    padding: 0;
     border: none;
-    border-radius: 3px;
     background-color: transparent;
-    outline: none;
     cursor: pointer;
   }
 
