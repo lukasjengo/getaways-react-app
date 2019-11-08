@@ -14,21 +14,10 @@ export const StyledNav = styled.nav`
 
 export const LogoWrapperLink = styled(Link)`
   display: flex;
-  align-items: center;
-  color: ${props => props.theme.colorPrimary};
-  &:active,
-  &:hover {
-    color: ${props => props.theme.colorSecondary};
-  }
-
   svg {
     width: 3.5rem;
     height: 3.5rem;
     fill: ${props => props.theme.colorPrimary};
-  }
-
-  span {
-    margin-left: 1rem;
   }
 `;
 
@@ -54,13 +43,5 @@ export const StyledButton = styled.button`
 
   span {
     margin-right: 0.5rem;
-  }
-
-  &:hover {
-    color: ${props => props.theme.colorSecondary};
-
-    svg {
-      fill: ${props => props.theme.colorSecondary};
-    }
   }
 `;

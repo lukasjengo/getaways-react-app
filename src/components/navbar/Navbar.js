@@ -20,12 +20,9 @@ const Navbar = ({ showModal, auth }) => {
   return (
     <StyledHeader>
       <StyledNav>
-        <div>
-          <LogoWrapperLink to='/'>
-            <Logo />
-            <span>GetAways</span>
-          </LogoWrapperLink>
-        </div>
+        <LogoWrapperLink to='/'>
+          <Logo />
+        </LogoWrapperLink>
         <SearchInput />
         {auth.isAuthorized ? (
           <StyledLink to='/dashboard'>

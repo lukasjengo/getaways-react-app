@@ -8,7 +8,7 @@ export const FormWrapper = styled.div`
 `;
 
 export const StyledForm = styled.form`
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 `;
 
 export const StyledDiv = styled.div`

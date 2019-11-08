@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
 export const HeadingSecondary = styled.h2`
-  font-size: 2.5rem;
-  margin-bottom: 1.2rem;
+  font-size: 2.7rem;
+  margin-bottom: 1.5rem;
 `;

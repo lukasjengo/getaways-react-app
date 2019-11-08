@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 
 import { hideModal } from 'redux/modal/modalActions';
 
-import LoginForm from 'components/authForms/LoginForm';
-import RegisterForm from 'components/authForms/RegisterForm';
+import LoginForm from 'components/authForm/LoginForm';
+import RegisterForm from 'components/authForm/RegisterForm';
+import ForgotPasswordForm from 'components/authForm/ForgotPasswordForm';
 
 import { ModalOverlay } from './styles';
 
@@ -36,6 +37,7 @@ const Modal = ({ modalType, hideModal }) => {
     <ModalOverlay ref={node}>
       {modalType === 'login' && <LoginForm />}
       {modalType === 'register' && <RegisterForm />}
+      {modalType === 'forgot-password' && <ForgotPasswordForm />}
     </ModalOverlay>
   );
 };

@@ -2,7 +2,15 @@ import React from 'react';
 
 import { InputWrapper } from './styles';
 
-const FormInput = ({ onChange, value, type, name, placeholder, required }) => {
+const FormInput = ({
+  onChange,
+  value,
+  type,
+  name,
+  placeholder,
+  required,
+  minLength
+}) => {
   return (
     <InputWrapper>
       <label htmlFor={name}>{name}</label>
@@ -14,6 +22,7 @@ const FormInput = ({ onChange, value, type, name, placeholder, required }) => {
         placeholder={placeholder}
         required={required}
         onChange={onChange}
+        minLength={minLength}
       />
     </InputWrapper>
   );

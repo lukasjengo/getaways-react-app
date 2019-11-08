@@ -26,7 +26,7 @@ const SearchInput = ({ getTours, getFilterText, allTours }) => {
     setTimeout(() => {
       searchQuery.current.value = '';
       setmodalVisible(false);
-    }, 200);
+    }, 180);
   };
   return (
     <StyledForm

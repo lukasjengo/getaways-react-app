@@ -5,6 +5,9 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
+  FORGOT_PASSWORD_REQUEST,
+  FORGOT_PASSWORD_SUCCESS,
+  FORGOT_PASSWORD_FAILURE,
   USER_LOADED,
   LOGOUT,
   DELETE_ACCOUNT,
@@ -24,6 +27,7 @@ export default (state = initialState, action) => {
   switch (type) {
     case LOGIN_REQUEST:
     case REGISTER_REQUEST:
+    case FORGOT_PASSWORD_REQUEST:
       return {
         ...state,
         isLoading: true
@@ -37,8 +41,15 @@ export default (state = initialState, action) => {
         isLoading: false,
         error: null
       };
+    case FORGOT_PASSWORD_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        error: null
+      };
     case LOGIN_FAILURE:
     case REGISTER_FAILURE:
+    case FORGOT_PASSWORD_FAILURE:
       return {
         ...state,
         isAuthorized: false,
