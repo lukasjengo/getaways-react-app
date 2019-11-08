@@ -24,6 +24,7 @@ const Navbar = ({ showModal, auth }) => {
           <Logo />
         </LogoWrapperLink>
         <SearchInput />
+        {/* REFACTORING */}
         {auth.isAuthorized ? (
           <StyledLink to='/dashboard'>
             <img
@@ -34,8 +35,8 @@ const Navbar = ({ showModal, auth }) => {
           </StyledLink>
         ) : (
           <StyledButton onClick={() => showModal('login')}>
-            <span>Login</span>
             <CustomIcon name='icon-user' />
+            <span>Log in</span>
           </StyledButton>
         )}
       </StyledNav>

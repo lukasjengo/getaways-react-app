@@ -42,6 +42,6 @@ export const StyledButton = styled.button`
   transition: all 0.2s;
 
   span {
-    margin-right: 0.5rem;
+    margin-left: 0.5rem;
   }
 `;

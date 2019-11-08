@@ -3,11 +3,12 @@ import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 
-import { login } from 'redux/auth/authActions';
+import { isLoggedIn } from 'redux/auth/authActions';
 
 // Components
-import Navbar from 'components/navbar/Navbar';
+import Alert from 'components/alert/Alert';
 import Modal from 'components/modal/Modal';
+import Navbar from 'components/navbar/Navbar';
 
 // Pages
 import Homepage from 'pages/homepage/Homepage';
@@ -16,19 +17,20 @@ import Homepage from 'pages/homepage/Homepage';
 import GlobalStyles from 'styles/GlobalStyles';
 import theme from 'styles/theme';
 
-const App = ({ login }) => {
+const App = ({ isLoggedIn }) => {
   useEffect(() => {
-    login();
-  }, [login]);
+    isLoggedIn();
+  }, [isLoggedIn]);
   return (
     <Fragment>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
+        <Alert />
+        <Modal />
         <Navbar />
         <Switch>
           <Route exact path='/' component={Homepage} />
         </Switch>
-        <Modal />
       </ThemeProvider>
     </Fragment>
   );
@@ -36,5 +38,5 @@ const App = ({ login }) => {
 
 export default connect(
   null,
-  { login }
+  { isLoggedIn }
 )(App);

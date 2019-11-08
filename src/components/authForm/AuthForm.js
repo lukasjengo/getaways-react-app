@@ -69,7 +69,7 @@ const AuthForm = ({
         )}
         <CustomButton color='primary'>
           {isLoading ? (
-            <Spinner size='small' />
+            <Spinner size='small' color='white' />
           ) : (
             (type === 'login' && 'Login') ||
             (type === 'register' && 'Register') ||

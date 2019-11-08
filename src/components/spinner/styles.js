@@ -18,6 +18,9 @@ export const StyledSpinner = styled.div`
     'width: 5rem; height: 5rem'}
   border: 3px solid rgba(0, 0, 0, 0.3);
   border-radius: 50%;
-  border-top-color: ${props => `${props.theme.colorSecondaryDark}`};
+  border-top-color: ${({ color, theme }) =>
+    color === 'white'
+      ? `${theme.colorWhiteBg}`
+      : `${theme.colorSecondaryDark}`};
   animation: ${spin} 1s ease-in-out infinite;
 `;
