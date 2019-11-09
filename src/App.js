@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
@@ -34,6 +35,10 @@ const App = ({ isLoggedIn }) => {
       </ThemeProvider>
     </Fragment>
   );
+};
+
+App.propTypes = {
+  isLoggedIn: PropTypes.func.isRequired
 };
 
 export default connect(

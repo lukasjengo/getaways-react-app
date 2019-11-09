@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { showModal } from 'redux/modal/modalActions';
@@ -99,6 +99,15 @@ const AuthForm = ({
       </StyledDiv>
     </FormWrapper>
   );
+};
+
+AuthForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  formData: PropTypes.object.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  type: PropTypes.string,
+  showModal: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({

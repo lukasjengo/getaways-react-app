@@ -4,15 +4,15 @@ import { connect } from 'react-redux';
 
 import { selectFilteredTours } from 'redux/tour/tourSelectors';
 
-import FilteredListModalItem from 'components/filteredListModalItem/FilteredListModalItem';
+import FilteredListDropdownItem from 'components/filteredListDropdownItem/filteredListDropdownItem';
 
 import { ModalWrapper } from './styles';
 
-const FilteredListModal = ({ filteredTours, modalVisible }) => {
+const FilteredListDropdown = ({ filteredTours, modalVisible }) => {
   return modalVisible ? (
     <ModalWrapper modalVisible={modalVisible}>
       {filteredTours.map(tour => (
-        <FilteredListModalItem
+        <FilteredListDropdownItem
           key={tour.id}
           name={tour.name}
           location={tour.startLocation.description}
@@ -24,7 +24,7 @@ const FilteredListModal = ({ filteredTours, modalVisible }) => {
   ) : null;
 };
 
-FilteredListModalItem.propTypes = {
+FilteredListDropdownItem.propTypes = {
   filteredTours: PropTypes.array,
   modalVisible: PropTypes.bool
 };
@@ -33,4 +33,4 @@ const mapStateToProps = state => ({
   filteredTours: selectFilteredTours(state)
 });
 
-export default connect(mapStateToProps)(FilteredListModal);
+export default connect(mapStateToProps)(FilteredListDropdown);

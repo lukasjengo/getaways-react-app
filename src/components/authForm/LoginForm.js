@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import AuthForm from 'components/authForm/AuthForm';
@@ -30,6 +30,11 @@ const LoginForm = ({ login, hideModal }) => {
       type='login'
     />
   );
+};
+
+LoginForm.propTypes = {
+  login: PropTypes.func.isRequired,
+  hideModal: PropTypes.func.isRequired
 };
 
 export default connect(

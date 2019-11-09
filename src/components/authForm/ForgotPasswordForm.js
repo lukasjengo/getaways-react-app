@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import AuthForm from 'components/authForm/AuthForm';
@@ -7,7 +7,7 @@ import AuthForm from 'components/authForm/AuthForm';
 import { hideModal } from 'redux/modal/modalActions';
 import { forgotPassword } from 'redux/auth/authActions';
 
-const LoginForm = ({ forgotPassword, hideModal }) => {
+const ForgotPasswordForm = ({ forgotPassword, hideModal }) => {
   const [formData, setFormData] = useState({
     email: ''
   });
@@ -31,7 +31,12 @@ const LoginForm = ({ forgotPassword, hideModal }) => {
   );
 };
 
+ForgotPasswordForm.propTypes = {
+  forgotPassword: PropTypes.func.isRequired,
+  hideModal: PropTypes.func.isRequired
+};
+
 export default connect(
   null,
   { forgotPassword, hideModal }
-)(LoginForm);
+)(ForgotPasswordForm);

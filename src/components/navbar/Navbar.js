@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { showModal } from 'redux/modal/modalActions';
@@ -42,6 +43,11 @@ const Navbar = ({ showModal, auth }) => {
       </StyledNav>
     </StyledHeader>
   );
+};
+
+Navbar.propTypes = {
+  showModal: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
