@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const AlertWrapper = styled.div`
   position: fixed;
-  top: 3rem;
-  right: 5rem;
+  top: 7.5rem;
+  right: 6rem;
   z-index: 9999;
   font-size: 1.5rem;
 `;

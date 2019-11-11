@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { setAlert } from 'redux/alert/alertActions';
+import { hideModal } from 'redux/modal/modalActions';
 
 import {
   REGISTER_REQUEST,
@@ -24,6 +25,7 @@ export const login = formData => async dispatch => {
       `${process.env.REACT_APP_API_URL}/users/login`,
       formData
     );
+    dispatch(hideModal());
     dispatch(setAlert('Login successful', 'success'));
     dispatch({ type: LOGIN_SUCCESS, payload: res.data.data.user });
   } catch (err) {
@@ -51,6 +53,7 @@ export const register = formData => async dispatch => {
       `${process.env.REACT_APP_API_URL}/users/signup`,
       formData
     );
+    dispatch(hideModal());
     dispatch(setAlert('Registration successful', 'success'));
     dispatch({ type: REGISTER_SUCCESS, payload: res.data.data.user });
   } catch (err) {
@@ -62,11 +65,11 @@ export const register = formData => async dispatch => {
 export const forgotPassword = formData => async dispatch => {
   dispatch({ type: FORGOT_PASSWORD_REQUEST });
   try {
-    const res = await axios.post(
+    await axios.post(
       `${process.env.REACT_APP_API_URL}/users/forgotpassword`,
       formData
     );
-    console.log(res.data.message);
+    dispatch(hideModal());
     dispatch({ type: FORGOT_PASSWORD_SUCCESS });
     dispatch(
       setAlert('Pasword reset instructions were sent to your email', 'success')

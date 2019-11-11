@@ -4,10 +4,9 @@ import { connect } from 'react-redux';
 
 import AuthForm from 'components/authForm/AuthForm';
 
-import { hideModal } from 'redux/modal/modalActions';
 import { register } from 'redux/auth/authActions';
 
-const RegisterForm = ({ register, hideModal }) => {
+const RegisterForm = ({ register }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -19,11 +18,10 @@ const RegisterForm = ({ register, hideModal }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = async e => {
+  const onSubmit = e => {
     e.preventDefault();
-    await register(formData);
     setFormData({ name: '', email: '', password: '', passwordConfirm: '' });
-    hideModal();
+    register(formData);
   };
 
   return (
@@ -37,11 +35,10 @@ const RegisterForm = ({ register, hideModal }) => {
 };
 
 RegisterForm.propTypes = {
-  register: PropTypes.func.isRequired,
-  hideModal: PropTypes.func.isRequired
+  register: PropTypes.func.isRequired
 };
 
 export default connect(
   null,
-  { register, hideModal }
+  { register }
 )(RegisterForm);

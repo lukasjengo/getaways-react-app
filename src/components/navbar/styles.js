@@ -10,6 +10,7 @@ export const StyledHeader = styled.header`
 export const StyledNav = styled.nav`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const LogoWrapperLink = styled(Link)`
@@ -22,9 +23,8 @@ export const LogoWrapperLink = styled(Link)`
 `;
 
 export const StyledLink = styled(Link)`
-  display: flex;
   align-items: center;
-
+  display: flex;
   img {
     border-radius: 50%;
     width: 4rem;

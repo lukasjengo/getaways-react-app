@@ -4,10 +4,9 @@ import { connect } from 'react-redux';
 
 import AuthForm from 'components/authForm/AuthForm';
 
-import { hideModal } from 'redux/modal/modalActions';
 import { login } from 'redux/auth/authActions';
 
-const LoginForm = ({ login, hideModal }) => {
+const LoginForm = ({ login }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -15,11 +14,10 @@ const LoginForm = ({ login, hideModal }) => {
   const onChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  const onSubmit = async e => {
+  const onSubmit = e => {
     e.preventDefault();
-    await login(formData);
     setFormData({ email: '', password: '' });
-    hideModal();
+    login(formData);
   };
 
   return (
@@ -33,11 +31,10 @@ const LoginForm = ({ login, hideModal }) => {
 };
 
 LoginForm.propTypes = {
-  login: PropTypes.func.isRequired,
-  hideModal: PropTypes.func.isRequired
+  login: PropTypes.func.isRequired
 };
 
 export default connect(
   null,
-  { login, hideModal }
+  { login }
 )(LoginForm);

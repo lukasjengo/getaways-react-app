@@ -1,7 +1,15 @@
 import React from 'react';
 
+import CardList from 'components/cardList/CardList';
+
+import { StyledMain } from './styles';
+
 const Homepage = () => {
-  return <div>homepage</div>;
+  return (
+    <StyledMain>
+      <CardList />
+    </StyledMain>
+  );
 };
 
 export default Homepage;

@@ -4,21 +4,19 @@ import { connect } from 'react-redux';
 
 import AuthForm from 'components/authForm/AuthForm';
 
-import { hideModal } from 'redux/modal/modalActions';
 import { forgotPassword } from 'redux/auth/authActions';
 
-const ForgotPasswordForm = ({ forgotPassword, hideModal }) => {
+const ForgotPasswordForm = ({ forgotPassword }) => {
   const [formData, setFormData] = useState({
     email: ''
   });
   const onChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  const onSubmit = async e => {
+  const onSubmit = e => {
     e.preventDefault();
-    await forgotPassword(formData);
     setFormData({ email: '' });
-    hideModal();
+    forgotPassword(formData);
   };
 
   return (
@@ -32,11 +30,10 @@ const ForgotPasswordForm = ({ forgotPassword, hideModal }) => {
 };
 
 ForgotPasswordForm.propTypes = {
-  forgotPassword: PropTypes.func.isRequired,
-  hideModal: PropTypes.func.isRequired
+  forgotPassword: PropTypes.func.isRequired
 };
 
 export default connect(
   null,
-  { forgotPassword, hideModal }
+  { forgotPassword }
 )(ForgotPasswordForm);

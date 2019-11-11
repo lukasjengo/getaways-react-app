@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const FormWrapper = styled.div`
   max-width: 40rem;
-  margin: 15rem auto;
+  margin: 10rem auto;
   padding: 3rem 4rem;
   background-color: ${props => props.theme.colorWhiteBg};
 `;
