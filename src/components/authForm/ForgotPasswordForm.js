@@ -1,23 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
+import { useForm } from 'hooks/useForm';
 
 import AuthForm from 'components/authForm/AuthForm';
 
 import { forgotPassword } from 'redux/auth/authActions';
 
 const ForgotPasswordForm = ({ forgotPassword }) => {
-  const [formData, setFormData] = useState({
-    email: ''
-  });
-  const onChange = e => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-  const onSubmit = e => {
-    e.preventDefault();
-    setFormData({ email: '' });
-    forgotPassword(formData);
-  };
+  const [onChange, onSubmit, formData] = useForm({ email: '' }, forgotPassword);
 
   return (
     <AuthForm

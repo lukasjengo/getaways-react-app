@@ -2,12 +2,14 @@ import React from 'react';
 
 import CardList from 'components/cardList/CardList';
 
-import { StyledMain } from './styles';
+import { StyledMain, StyledSection } from './styles';
 
 const Homepage = () => {
   return (
     <StyledMain>
-      <CardList />
+      <StyledSection>
+        <CardList />
+      </StyledSection>
     </StyledMain>
   );
 };

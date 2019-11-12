@@ -3,16 +3,30 @@ import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
 
-const FilteredListDropdownItem = ({ name, location, startDate, slug }) => {
+import CustomIcon from 'components/customIcon/CustomIcon';
+
+import { StyledLi, RatingWrapper } from './styles';
+
+const FilteredListDropdownItem = ({
+  name,
+  location,
+  startDate,
+  slug,
+  ratingsAverage
+}) => {
   return (
-    <li>
+    <StyledLi>
       <Link to={`/tour/${slug}`}>
         <h4>{name}</h4>
         <p>
           {location} | starts: {startDate}
         </p>
+        <RatingWrapper>
+          <span>{ratingsAverage}</span>
+          <CustomIcon name='icon-star' />
+        </RatingWrapper>
       </Link>
-    </li>
+    </StyledLi>
   );
 };
 

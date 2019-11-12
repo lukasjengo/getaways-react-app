@@ -1,62 +1,80 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { getTours, getFilterText } from 'redux/tour/tourActions';
-import { selectAllTours } from 'redux/tour/tourSelectors';
+import { getFilterText } from 'redux/tour/tourActions';
 
 import FilteredListDropdown from 'components/filteredListDropdown/filteredListDropdown';
 
 import { StyledForm, StyledInput } from './styles';
 
-const SearchInput = ({ getTours, getFilterText, allTours }) => {
-  if (allTours.length < 1) getTours();
-
-  const [modalVisible, setmodalVisible] = useState(false);
+const SearchInput = ({ getFilterText }) => {
+  const formNode = useRef(null);
   const inputNode = useRef(null);
 
-  const onChange = () => {
-    if (inputNode.current.value.length >= 1) {
-      setmodalVisible(true);
-      getFilterText(inputNode.current.value);
+  const [visible, setVisible] = useState(false);
+
+  let history = useHistory();
+  useEffect(
+    () =>
+      history.listen(() => {
+        setVisible(false);
+        inputNode.current.value = '';
+      }),
+    //eslint-disable-next-line
+    []
+  );
+
+  const handleClickOutside = e => {
+    if (formNode.current.contains(e.target)) {
+      // outside click
+      return;
+    }
+    setVisible(false);
+    inputNode.current.value = '';
+  };
+
+  useEffect(() => {
+    if (visible) {
+      document.addEventListener('mousedown', handleClickOutside);
     } else {
-      setmodalVisible(false);
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+    //eslint-disable-next-line
+  }, [visible]);
+
+  const onChange = e => {
+    getFilterText(e.target.value);
+    if (e.target.value.length !== 0) {
+      setVisible(true);
+    } else {
+      setVisible(false);
     }
   };
-  const onBlur = e => {
-    setTimeout(() => {
-      inputNode.current.value = '';
-      setmodalVisible(false);
-    }, 180);
-  };
+
   return (
-    <StyledForm
-      onChange={onChange}
-      onBlur={onBlur}
-      onSubmit={e => e.preventDefault()}
-    >
+    <StyledForm ref={formNode} onSubmit={e => e.preventDefault()}>
       <StyledInput
         type='text'
         placeholder='Search for tours'
-        ref={inputNode}
         required
+        ref={inputNode}
+        onChange={onChange}
       />
-      <FilteredListDropdown modalVisible={modalVisible} />
+      {visible && <FilteredListDropdown />}
     </StyledForm>
   );
 };
 
 SearchInput.propTypes = {
-  getTours: PropTypes.func.isRequired,
-  getFilterText: PropTypes.func.isRequired,
-  allTours: PropTypes.array.isRequired
+  getFilterText: PropTypes.func.isRequired
 };
 
-const mapStateToProps = state => ({
-  allTours: selectAllTours(state)
-});
-
 export default connect(
-  mapStateToProps,
-  { getTours, getFilterText }
+  null,
+  { getFilterText }
 )(SearchInput);

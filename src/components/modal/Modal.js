@@ -26,6 +26,7 @@ const Modal = ({ modalType, hideModal }) => {
   }, [modalType]);
 
   const handleClickOutside = e => {
+    // if (modalNode.current === e.target) {
     if (modalNode.current === e.target) {
       // outside click
       hideModal();

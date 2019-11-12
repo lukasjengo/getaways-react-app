@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 
 import { isLoggedIn } from 'redux/auth/authActions';
+import { getTours } from 'redux/tour/tourActions';
 
 // Components
 import Alert from 'components/alert/Alert';
@@ -18,10 +19,12 @@ import Homepage from 'pages/homepage/Homepage';
 import GlobalStyles from 'styles/GlobalStyles';
 import theme from 'styles/theme';
 
-const App = ({ isLoggedIn }) => {
+const App = ({ isLoggedIn, getTours }) => {
   useEffect(() => {
     isLoggedIn();
-  }, [isLoggedIn]);
+    getTours();
+    //eslint-disable-next-line
+  }, []);
   return (
     <Fragment>
       <ThemeProvider theme={theme}>
@@ -38,10 +41,11 @@ const App = ({ isLoggedIn }) => {
 };
 
 App.propTypes = {
-  isLoggedIn: PropTypes.func.isRequired
+  isLoggedIn: PropTypes.func.isRequired,
+  getTours: PropTypes.func.isRequired
 };
 
 export default connect(
   null,
-  { isLoggedIn }
+  { isLoggedIn, getTours }
 )(App);

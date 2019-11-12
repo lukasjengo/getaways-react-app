@@ -8,25 +8,25 @@ import FilteredListDropdownItem from 'components/filteredListDropdownItem/filter
 
 import { ModalWrapper } from './styles';
 
-const FilteredListDropdown = ({ filteredTours, modalVisible }) => {
-  return modalVisible ? (
-    <ModalWrapper modalVisible={modalVisible}>
+const FilteredListDropdown = ({ filteredTours }) => {
+  return (
+    <ModalWrapper>
       {filteredTours.map(tour => (
         <FilteredListDropdownItem
           key={tour.id}
           name={tour.name}
           location={tour.startLocation.description}
           startDate={tour.startDates[0].split('T')[0]}
+          ratingsAverage={tour.ratingsAverage}
           slug={tour.slug}
         />
       ))}
     </ModalWrapper>
-  ) : null;
+  );
 };
 
 FilteredListDropdownItem.propTypes = {
-  filteredTours: PropTypes.array,
-  modalVisible: PropTypes.bool
+  filteredTours: PropTypes.array
 };
 
 const mapStateToProps = state => ({
