@@ -14,6 +14,7 @@ const CardList = ({ tours }) => {
       {tours.map(tour => (
         <CardListItem
           key={tour.id}
+          id={tour.id}
           name={tour.name}
           imageCover={tour.imageCover}
           summary={tour.summary}

@@ -19,7 +19,8 @@ const theme = {
 
   // SHADOWS
   shadowLight1: '0 3px 1.7rem rgba(237, 234, 229, .6)',
-  shadowLight2: '0 2px .5rem rgba(237, 234, 229, .6)'
+  shadowLight2: '0 2px .5rem rgba(237, 234, 229, .6)',
+  shadowDark1: '0 3px .5rem rgba(0, 0, 0, .3)',
 };
 
 export default theme;

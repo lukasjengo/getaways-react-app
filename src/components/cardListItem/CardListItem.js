@@ -6,10 +6,17 @@ import CustomIcon from 'components/customIcon/CustomIcon';
 
 import { StyledImageContainer, StyledListItem, HeadingWrapper } from './styles';
 
-const CardListItem = ({ name, imageCover, summary, slug, ratingsAverage }) => {
+const CardListItem = ({
+  id,
+  name,
+  imageCover,
+  summary,
+  slug,
+  ratingsAverage
+}) => {
   return (
     <StyledListItem>
-      <Link to={`/tour/${slug}`}>
+      <Link to={`/tour/${slug}-${id}`}>
         <StyledImageContainer imageCover={imageCover} />
         <HeadingWrapper>
           <h4>{name}</h4>
@@ -25,6 +32,7 @@ const CardListItem = ({ name, imageCover, summary, slug, ratingsAverage }) => {
 };
 
 CardListItem.propTypes = {
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   imageCover: PropTypes.string.isRequired,
   summary: PropTypes.string.isRequired,

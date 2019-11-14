@@ -8,6 +8,7 @@ import CustomIcon from 'components/customIcon/CustomIcon';
 import { StyledLi, RatingWrapper } from './styles';
 
 const FilteredListDropdownItem = ({
+  id,
   name,
   location,
   startDate,
@@ -16,7 +17,7 @@ const FilteredListDropdownItem = ({
 }) => {
   return (
     <StyledLi>
-      <Link to={`/tour/${slug}`}>
+      <Link to={`/tour/${slug}-${id}`}>
         <h4>{name}</h4>
         <p>
           {location} | starts: {startDate}
@@ -31,6 +32,7 @@ const FilteredListDropdownItem = ({
 };
 
 FilteredListDropdownItem.propTypes = {
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
   startDate: PropTypes.string.isRequired,

@@ -14,6 +14,7 @@ import Navbar from 'components/navbar/Navbar';
 
 // Pages
 import Homepage from 'pages/homepage/Homepage';
+import Tourpage from 'pages/tourpage/Tourpage';
 
 // Styles
 import GlobalStyles from 'styles/GlobalStyles';
@@ -34,6 +35,7 @@ const App = ({ isLoggedIn, getTours }) => {
         <Navbar />
         <Switch>
           <Route exact path='/' component={Homepage} />
+          <Route exact path='/tour/:slug' component={Tourpage} />
         </Switch>
       </ThemeProvider>
     </Fragment>

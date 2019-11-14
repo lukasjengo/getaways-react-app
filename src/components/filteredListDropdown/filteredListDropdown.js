@@ -14,6 +14,7 @@ const FilteredListDropdown = ({ filteredTours }) => {
       {filteredTours.map(tour => (
         <FilteredListDropdownItem
           key={tour.id}
+          id={tour.id}
           name={tour.name}
           location={tour.startLocation.description}
           startDate={tour.startDates[0].split('T')[0]}
