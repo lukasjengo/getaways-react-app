@@ -17,7 +17,7 @@ const AuthForm = ({
   formData,
   isLoading,
   type,
-  showModal
+  showModal,
 }) => {
   return (
     <FormWrapper>
@@ -31,45 +31,45 @@ const AuthForm = ({
           <FormInput
             onChange={onChange}
             value={formData.name}
-            type='text'
-            name='name'
-            placeholder='John Johnson'
+            type="text"
+            name="name"
+            placeholder="John Johnson"
             required={true}
           />
         )}
         <FormInput
           onChange={onChange}
           value={formData.email}
-          type='email'
-          name='email'
-          placeholder='example@email.com'
+          type="email"
+          name="email"
+          placeholder="example@email.com"
           required={true}
         />
         {type === 'register' || type === 'login' ? (
           <FormInput
             onChange={onChange}
             value={formData.password}
-            type='password'
-            name='password'
-            placeholder='••••••••'
+            type="password"
+            name="password"
+            placeholder="••••••••"
             required={true}
-            minLength='8'
+            minLength="8"
           />
         ) : null}
         {type === 'register' && (
           <FormInput
             onChange={onChange}
             value={formData.passwordConfirm}
-            type='password'
-            name='passwordConfirm'
-            placeholder='••••••••'
+            type="password"
+            name="passwordConfirm"
+            placeholder="••••••••"
             required={true}
-            minLength='8'
+            minLength="8"
           />
         )}
-        <CustomButton color='primary'>
+        <CustomButton color="primary">
           {isLoading ? (
-            <Spinner size='small' color='colorWhiteBg' />
+            <Spinner size="small" color="colorWhiteBg" />
           ) : (
             (type === 'login' && 'Login') ||
             (type === 'register' && 'Register') ||
@@ -79,18 +79,18 @@ const AuthForm = ({
       </StyledForm>
       <StyledDiv>
         {type === 'login' || type === 'forgot-password' ? (
-          <CustomButton type='underline' onClick={() => showModal('register')}>
+          <CustomButton type="underline" onClick={() => showModal('register')}>
             Don't have an account? Register here.
           </CustomButton>
         ) : null}
         {type === 'register' || type === 'forgot-password' ? (
-          <CustomButton type='underline' onClick={() => showModal('login')}>
+          <CustomButton type="underline" onClick={() => showModal('login')}>
             Already have an account? Login here.
           </CustomButton>
         ) : null}
         {type === 'register' || type === 'login' ? (
           <CustomButton
-            type='underline'
+            type="underline"
             onClick={() => showModal('forgot-password')}
           >
             Forgot password? Reset it here.
@@ -107,14 +107,11 @@ AuthForm.propTypes = {
   formData: PropTypes.object.isRequired,
   isLoading: PropTypes.bool.isRequired,
   type: PropTypes.string,
-  showModal: PropTypes.func.isRequired
+  showModal: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-  isLoading: state.auth.isLoading
+  isLoading: state.auth.isLoading,
 });
 
-export default connect(
-  mapStateToProps,
-  { showModal }
-)(AuthForm);
+export default connect(mapStateToProps, { showModal })(AuthForm);

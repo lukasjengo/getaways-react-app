@@ -13,7 +13,7 @@ import {
   FORGOT_PASSWORD_SUCCESS,
   FORGOT_PASSWORD_FAILURE,
   LOGOUT,
-  DELETE_ACCOUNT
+  DELETE_ACCOUNT,
 } from './authTypes';
 
 axios.defaults.withCredentials = true;
@@ -77,7 +77,7 @@ export const forgotPassword = formData => async dispatch => {
   } catch (err) {
     dispatch({
       type: FORGOT_PASSWORD_FAILURE,
-      payload: err.response.data.message
+      payload: err.response.data.message,
     });
     dispatch(setAlert(err.response.data.message, 'danger'));
   }

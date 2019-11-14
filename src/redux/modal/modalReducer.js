@@ -1,7 +1,7 @@
 import { SHOW_MODAL, HIDE_MODAL } from './modalTypes';
 
 const initialState = {
-  modalType: null
+  modalType: null,
 };
 
 export default (state = initialState, action) => {
@@ -11,12 +11,12 @@ export default (state = initialState, action) => {
     case SHOW_MODAL:
       return {
         ...state,
-        modalType: payload
+        modalType: payload,
       };
     case HIDE_MODAL:
       return {
         ...state,
-        modalType: null
+        modalType: null,
       };
     default:
       return state;

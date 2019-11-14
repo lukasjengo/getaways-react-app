@@ -46,14 +46,11 @@ const Modal = ({ modalType, hideModal }) => {
 
 Modal.propTypes = {
   modalType: PropTypes.string,
-  hideModal: PropTypes.func.isRequired
+  hideModal: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-  modalType: state.modal.modalType
+  modalType: state.modal.modalType,
 });
 
-export default connect(
-  mapStateToProps,
-  { hideModal }
-)(Modal);
+export default connect(mapStateToProps, { hideModal })(Modal);

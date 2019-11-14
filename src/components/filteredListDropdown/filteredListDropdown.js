@@ -27,11 +27,11 @@ const FilteredListDropdown = ({ filteredTours }) => {
 };
 
 FilteredListDropdownItem.propTypes = {
-  filteredTours: PropTypes.array
+  filteredTours: PropTypes.array,
 };
 
 const mapStateToProps = state => ({
-  filteredTours: selectFilteredTours(state)
+  filteredTours: selectFilteredTours(state),
 });
 
 export default connect(mapStateToProps)(FilteredListDropdown);

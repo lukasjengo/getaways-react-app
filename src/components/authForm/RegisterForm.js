@@ -19,16 +19,13 @@ const RegisterForm = ({ register }) => {
       onSubmit={onSubmit}
       onChange={onChange}
       formData={formData}
-      type='register'
+      type="register"
     />
   );
 };
 
 RegisterForm.propTypes = {
-  register: PropTypes.func.isRequired
+  register: PropTypes.func.isRequired,
 };
 
-export default connect(
-  null,
-  { register }
-)(RegisterForm);
+export default connect(null, { register })(RegisterForm);

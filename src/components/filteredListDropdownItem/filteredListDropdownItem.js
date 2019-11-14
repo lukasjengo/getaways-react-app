@@ -13,7 +13,7 @@ const FilteredListDropdownItem = ({
   location,
   startDate,
   slug,
-  ratingsAverage
+  ratingsAverage,
 }) => {
   return (
     <StyledLi>
@@ -24,7 +24,7 @@ const FilteredListDropdownItem = ({
         </p>
         <RatingWrapper>
           <span>{ratingsAverage}</span>
-          <CustomIcon name='icon-star' />
+          <CustomIcon name="icon-star" />
         </RatingWrapper>
       </Link>
     </StyledLi>
@@ -36,7 +36,7 @@ FilteredListDropdownItem.propTypes = {
   name: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
   startDate: PropTypes.string.isRequired,
-  slug: PropTypes.string.isRequired
+  slug: PropTypes.string.isRequired,
 };
 
 export default FilteredListDropdownItem;

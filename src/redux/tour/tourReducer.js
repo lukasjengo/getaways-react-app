@@ -5,17 +5,17 @@ import {
   GET_CURRENT_TOUR_REQUEST,
   GET_CURRENT_TOUR_SUCCESS,
   GET_CURRENT_TOUR_FAILURE,
-  GET_FILTER_TEXT
+  GET_FILTER_TEXT,
 } from './tourTypes';
 
 const initialState = {
   allTours: [],
   currentTour: null,
   filter: {
-    text: null
+    text: null,
   },
   isLoading: false,
-  error: null
+  error: null,
 };
 
 export default (state = initialState, action) => {
@@ -26,31 +26,31 @@ export default (state = initialState, action) => {
     case GET_CURRENT_TOUR_REQUEST:
       return {
         ...state,
-        isLoading: true
+        isLoading: true,
       };
     case GET_TOURS_SUCCESS:
       return {
         ...state,
         allTours: payload,
-        isLoading: false
+        isLoading: false,
       };
     case GET_CURRENT_TOUR_SUCCESS:
       return {
         ...state,
         currentTour: payload,
-        isLoading: false
+        isLoading: false,
       };
     case GET_TOURS_FAILURE:
     case GET_CURRENT_TOUR_FAILURE:
       return {
         ...state,
         isLoading: false,
-        error: payload
+        error: payload,
       };
     case GET_FILTER_TEXT:
       return {
         ...state,
-        filter: { ...state.filter, text: payload }
+        filter: { ...state.filter, text: payload },
       };
     default:
       return state;

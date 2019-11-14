@@ -19,16 +19,13 @@ const LoginForm = ({ login }) => {
       onSubmit={onSubmit}
       onChange={onChange}
       formData={formData}
-      type='login'
+      type="login"
     />
   );
 };
 
 LoginForm.propTypes = {
-  login: PropTypes.func.isRequired
+  login: PropTypes.func.isRequired,
 };
 
-export default connect(
-  null,
-  { login }
-)(LoginForm);
+export default connect(null, { login })(LoginForm);

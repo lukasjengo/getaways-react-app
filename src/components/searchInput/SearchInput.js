@@ -59,8 +59,8 @@ const SearchInput = ({ getFilterText }) => {
   return (
     <StyledForm ref={formNode} onSubmit={e => e.preventDefault()}>
       <StyledInput
-        type='text'
-        placeholder='Search for tours'
+        type="text"
+        placeholder="Search for tours"
         required
         ref={inputNode}
         onChange={onChange}
@@ -71,10 +71,7 @@ const SearchInput = ({ getFilterText }) => {
 };
 
 SearchInput.propTypes = {
-  getFilterText: PropTypes.func.isRequired
+  getFilterText: PropTypes.func.isRequired,
 };
 
-export default connect(
-  null,
-  { getFilterText }
-)(SearchInput);
+export default connect(null, { getFilterText })(SearchInput);

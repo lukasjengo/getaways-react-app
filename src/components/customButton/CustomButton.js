@@ -15,7 +15,7 @@ const CustomButton = ({ color, type, onClick, children }) => {
 CustomButton.propTypes = {
   color: PropTypes.string,
   type: PropTypes.string,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
 };
 
 export default CustomButton;

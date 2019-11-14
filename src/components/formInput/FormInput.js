@@ -9,7 +9,7 @@ const FormInput = ({
   name,
   placeholder,
   required,
-  minLength
+  minLength,
 }) => {
   return (
     <InputWrapper>

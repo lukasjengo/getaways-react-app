@@ -13,7 +13,7 @@ const CustomIcon = ({ name, size }) => (
 
 CustomIcon.propTypes = {
   name: PropTypes.string.isRequired,
-  size: PropTypes.string
+  size: PropTypes.string,
 };
 
 export default CustomIcon;

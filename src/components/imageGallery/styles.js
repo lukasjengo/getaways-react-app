@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ImageGalleryGrid = styled.div`
   margin: 2rem 0;

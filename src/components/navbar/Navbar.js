@@ -14,29 +14,29 @@ import {
   StyledNav,
   LogoWrapperLink,
   StyledLink,
-  StyledButton
+  StyledButton,
 } from './styles';
 
 const Navbar = ({ showModal, auth }) => {
   return (
     <StyledHeader>
       <StyledNav>
-        <LogoWrapperLink to='/'>
+        <LogoWrapperLink to="/">
           <Logo />
         </LogoWrapperLink>
         <SearchInput />
         {/* REFACTORING */}
         {auth.isAuthorized ? (
-          <StyledLink to='/dashboard'>
+          <StyledLink to="/dashboard">
             <img
               src={`${process.env.REACT_APP_SERVER_UPLOADS_URL}/users/${auth.user.photo}`}
-              alt='user profile'
+              alt="user profile"
             />
             <span>{auth.user.name.split(' ')[0]}</span>
           </StyledLink>
         ) : (
           <StyledButton onClick={() => showModal('login')}>
-            <CustomIcon name='icon-user' />
+            <CustomIcon name="icon-user" />
             <span>Log in</span>
           </StyledButton>
         )}
@@ -47,14 +47,11 @@ const Navbar = ({ showModal, auth }) => {
 
 Navbar.propTypes = {
   showModal: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
 });
 
-export default connect(
-  mapStateToProps,
-  { showModal }
-)(Navbar);
+export default connect(mapStateToProps, { showModal })(Navbar);

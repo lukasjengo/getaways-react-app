@@ -34,8 +34,8 @@ const App = ({ isLoggedIn, getTours }) => {
         <Modal />
         <Navbar />
         <Switch>
-          <Route exact path='/' component={Homepage} />
-          <Route exact path='/tour/:slug' component={Tourpage} />
+          <Route exact path="/" component={Homepage} />
+          <Route exact path="/tour/:slug" component={Tourpage} />
         </Switch>
       </ThemeProvider>
     </Fragment>
@@ -44,10 +44,7 @@ const App = ({ isLoggedIn, getTours }) => {
 
 App.propTypes = {
   isLoggedIn: PropTypes.func.isRequired,
-  getTours: PropTypes.func.isRequired
+  getTours: PropTypes.func.isRequired,
 };
 
-export default connect(
-  null,
-  { isLoggedIn, getTours }
-)(App);
+export default connect(null, { isLoggedIn, getTours })(App);

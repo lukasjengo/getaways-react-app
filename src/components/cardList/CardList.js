@@ -27,11 +27,11 @@ const CardList = ({ tours }) => {
 };
 
 CardList.propTypes = {
-  tours: PropTypes.array.isRequired
+  tours: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = state => ({
-  tours: selectAllTours(state)
+  tours: selectAllTours(state),
 });
 
 export default connect(mapStateToProps)(CardList);

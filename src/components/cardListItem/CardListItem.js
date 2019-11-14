@@ -12,7 +12,7 @@ const CardListItem = ({
   imageCover,
   summary,
   slug,
-  ratingsAverage
+  ratingsAverage,
 }) => {
   return (
     <StyledListItem>
@@ -22,7 +22,7 @@ const CardListItem = ({
           <h4>{name}</h4>
           <span>
             {ratingsAverage}
-            <CustomIcon name='icon-star' />
+            <CustomIcon name="icon-star" />
           </span>
         </HeadingWrapper>
         <p>{summary}</p>
@@ -37,7 +37,7 @@ CardListItem.propTypes = {
   imageCover: PropTypes.string.isRequired,
   summary: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
-  ratingsAverage: PropTypes.number.isRequired
+  ratingsAverage: PropTypes.number.isRequired,
 };
 
 export default CardListItem;

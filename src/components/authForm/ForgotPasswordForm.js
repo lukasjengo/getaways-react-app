@@ -16,16 +16,13 @@ const ForgotPasswordForm = ({ forgotPassword }) => {
       onSubmit={onSubmit}
       onChange={onChange}
       formData={formData}
-      type='forgot-password'
+      type="forgot-password"
     />
   );
 };
 
 ForgotPasswordForm.propTypes = {
-  forgotPassword: PropTypes.func.isRequired
+  forgotPassword: PropTypes.func.isRequired,
 };
 
-export default connect(
-  null,
-  { forgotPassword }
-)(ForgotPasswordForm);
+export default connect(null, { forgotPassword })(ForgotPasswordForm);

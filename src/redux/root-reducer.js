@@ -9,7 +9,7 @@ const rootReducer = combineReducers({
   tour: tourReducer,
   auth: authReducer,
   modal: modalReducer,
-  alerts: alertReducer
+  alerts: alertReducer,
 });
 
 export default rootReducer;

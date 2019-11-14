@@ -7,7 +7,7 @@ import {
   GET_CURRENT_TOUR_REQUEST,
   GET_CURRENT_TOUR_SUCCESS,
   GET_CURRENT_TOUR_FAILURE,
-  GET_FILTER_TEXT
+  GET_FILTER_TEXT,
 } from './tourTypes';
 
 export const getTours = () => async dispatch => {
@@ -17,12 +17,12 @@ export const getTours = () => async dispatch => {
     const data = res.data.data.data;
     dispatch({
       type: GET_TOURS_SUCCESS,
-      payload: data
+      payload: data,
     });
   } catch (err) {
     dispatch({
       type: GET_TOURS_FAILURE,
-      payload: err.response.data.message
+      payload: err.response.data.message,
     });
   }
 };
@@ -34,12 +34,12 @@ export const getCurrentTour = id => async dispatch => {
     const data = res.data.data.data;
     dispatch({
       type: GET_CURRENT_TOUR_SUCCESS,
-      payload: data
+      payload: data,
     });
   } catch (err) {
     dispatch({
       type: GET_CURRENT_TOUR_FAILURE,
-      payload: err.response.data.message
+      payload: err.response.data.message,
     });
   }
 };
