@@ -1,12 +1,14 @@
 import React from 'react';
 
 import CustomButton from 'components/customButton/CustomButton';
+import CustomIcon from 'components/customIcon/CustomIcon';
 
 import {
   StyledContainer,
   StyledFlexContainer,
   StyledLeftContainer,
   StyledRightContainer,
+  StyledRatingContainer,
 } from './styles';
 
 const TourCtaBar = ({ currentTour }) => {
@@ -14,12 +16,18 @@ const TourCtaBar = ({ currentTour }) => {
     <StyledContainer>
       <StyledFlexContainer>
         <StyledLeftContainer>
-          <h4>{currentTour.name}</h4>
-          <span>{currentTour.duration} day tour</span>
+          <StyledRatingContainer>
+            <span>{currentTour.ratingsAverage}</span>
+            <CustomIcon name="icon-star" size="2.2rem" />
+          </StyledRatingContainer>
+          <div>
+            <h4>{currentTour.name}</h4>
+            <span>{currentTour.duration} day tour</span>
+          </div>
         </StyledLeftContainer>
         <StyledRightContainer>
           <span>{currentTour.price}€ / person</span>
-          <CustomButton>Book tour</CustomButton>
+          <CustomButton size="2rem">Book tour</CustomButton>
         </StyledRightContainer>
       </StyledFlexContainer>
     </StyledContainer>

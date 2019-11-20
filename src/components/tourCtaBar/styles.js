@@ -5,7 +5,7 @@ export const StyledContainer = styled.div`
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 0.5rem 2rem;
+  padding: 1rem 2rem;
   background-color: ${({ theme }) => theme.colorWhite};
   box-shadow: ${({ theme }) => theme.shadowDark1};
   z-index: 500;
@@ -20,8 +20,11 @@ export const StyledFlexContainer = styled.div`
 `;
 
 export const StyledLeftContainer = styled.div`
+  display: flex;
+  align-items: center;
+
   h4 {
-    font-size: 1.6rem;
+    font-size: 1.9rem;
   }
 
   span {
@@ -31,8 +34,17 @@ export const StyledLeftContainer = styled.div`
 
 export const StyledRightContainer = styled.div`
   span {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 600;
     margin-right: 1rem;
+  }
+`;
+
+export const StyledRatingContainer = styled.div`
+  margin-right: 2rem;
+  span {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-right: 2px;
   }
 `;

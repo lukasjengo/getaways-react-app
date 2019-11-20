@@ -7,7 +7,7 @@ const spin = keyframes`
 export const SpinnerContainer = styled.div`
   display: flex;
   justify-content: center;
-  ${({ size }) => size !== 'small' && 'margin-bottom: 5rem;'}
+  ${({ size }) => size !== 'small' && 'margin: 8rem 0;'}
 `;
 
 export const StyledSpinner = styled.div`

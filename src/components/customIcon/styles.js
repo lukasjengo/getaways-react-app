@@ -5,5 +5,5 @@ export const Svg = styled.svg`
   width: ${props => (props.size ? `${props.size}` : '1.8rem')};
   height: ${props => (props.size ? `${props.size}` : '1.8rem')};
   transition: all 0.2s;
-  vertical-align: text-bottom;
+  vertical-align: sub;
 `;

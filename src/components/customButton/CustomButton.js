@@ -2,11 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StyledButton, StyledButtonUnderline } from './styles';
 
-const CustomButton = ({ color, type, onClick, children }) => {
+const CustomButton = ({ color, type, size, onClick, children }) => {
   return type === 'underline' ? (
-    <StyledButtonUnderline onClick={onClick}>{children}</StyledButtonUnderline>
+    <StyledButtonUnderline size={size} onClick={onClick}>
+      {children}
+    </StyledButtonUnderline>
   ) : (
-    <StyledButton color={color} onClick={onClick}>
+    <StyledButton size={size} color={color} onClick={onClick}>
       {children}
     </StyledButton>
   );

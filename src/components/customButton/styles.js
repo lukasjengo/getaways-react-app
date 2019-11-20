@@ -6,7 +6,7 @@ export const StyledButton = styled.button`
     (color === 'secondary' && `${theme.colorSecondary}`) ||
     `${theme.colorPrimary}`};
   color: ${props => props.theme.colorWhite};
-  font-size: 1.4rem;
+  font-size: ${({ size }) => (size ? `${size}` : '1.4rem')};
   border-radius: 3px;
   padding: 0.5rem 2rem;
   transition: all 0.2s;
@@ -25,7 +25,7 @@ export const StyledButton = styled.button`
 
 export const StyledButtonUnderline = styled.button`
   color: ${props => props.theme.colorSecondary};
-  font-size: 1.2rem;
+  font-size: ${({ size }) => (size ? `${size}` : '1.2rem')};
   transition: all 0.2s;
   border-bottom: 1px solid ${props => props.theme.colorSecondary};
 

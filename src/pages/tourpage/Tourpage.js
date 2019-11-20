@@ -7,7 +7,12 @@ import ImageGallery from 'components/imageGallery/ImageGallery';
 import TourCtaBar from 'components/tourCtaBar/TourCtaBar';
 import Spinner from 'components/spinner/Spinner';
 
-import { StyledMain } from './styles';
+import {
+  StyledMain,
+  StyledSectionTop,
+  StyledSectionDescription,
+} from './styles';
+import { HeadingPrimary, HeadingSecondary, Paragraph } from 'styles/typography';
 
 const Tourpage = ({ match, currentTour, getCurrentTour, isLoading }) => {
   const tourId = match.params.slug.substring(
@@ -17,7 +22,7 @@ const Tourpage = ({ match, currentTour, getCurrentTour, isLoading }) => {
     if (currentTour === null || currentTour.id !== tourId)
       getCurrentTour(tourId);
     //eslint-disable-next-line
-  }, []);
+  }, [tourId]);
 
   return (
     <StyledMain>
@@ -25,16 +30,22 @@ const Tourpage = ({ match, currentTour, getCurrentTour, isLoading }) => {
         <Spinner color="colorPrimary" />
       ) : (
         <Fragment>
-          <section>
-            <h1>
+          <StyledSectionTop>
+            <HeadingPrimary>
               {currentTour.duration} Day Tour - {currentTour.name}
-            </h1>
-            <p>{currentTour.summary}</p>
+            </HeadingPrimary>
+            <Paragraph>{currentTour.summary}</Paragraph>
             <ImageGallery
               imageCover={currentTour.imageCover}
               images={currentTour.images}
             />
-          </section>
+          </StyledSectionTop>
+          <StyledSectionDescription background="colorPrimary" fullWidth={true}>
+            <div>
+              <HeadingSecondary>About this tour</HeadingSecondary>
+              <Paragraph>{currentTour.description}</Paragraph>
+            </div>
+          </StyledSectionDescription>
           <TourCtaBar currentTour={currentTour} />
         </Fragment>
       )}
