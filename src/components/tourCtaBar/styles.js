@@ -28,7 +28,7 @@ export const StyledLeftContainer = styled.div`
   }
 
   span {
-    text-transform: uppercase;
+    font-size: 1.2rem;
   }
 `;
 

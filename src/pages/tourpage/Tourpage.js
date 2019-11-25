@@ -6,11 +6,14 @@ import { getCurrentTour } from 'redux/tour/tourActions';
 import ImageGallery from 'components/imageGallery/ImageGallery';
 import TourCtaBar from 'components/tourCtaBar/TourCtaBar';
 import Spinner from 'components/spinner/Spinner';
+import CustomIcon from 'components/customIcon/CustomIcon';
+import Map from 'components/map/Map';
 
 import {
   StyledMain,
   StyledSectionTop,
   StyledSectionDescription,
+  FeatureContainer,
 } from './styles';
 import { HeadingPrimary, HeadingSecondary, Paragraph } from 'styles/typography';
 
@@ -44,8 +47,29 @@ const Tourpage = ({ match, currentTour, getCurrentTour, isLoading }) => {
             <div>
               <HeadingSecondary>About this tour</HeadingSecondary>
               <Paragraph>{currentTour.description}</Paragraph>
+              <FeatureContainer>
+                <div>
+                  <CustomIcon name="icon-stopwatch" fill="colorWhiteBg" />{' '}
+                  Duration: {currentTour.duration} days
+                </div>
+                <div>
+                  <CustomIcon name="icon-users" fill="colorWhiteBg" /> Group
+                  size: up to {currentTour.maxGroupSize}
+                </div>
+                <div>
+                  <CustomIcon name="icon-bar-graph" fill="colorWhiteBg" />{' '}
+                  Difficulty: {currentTour.difficulty}
+                </div>
+                <div>
+                  <CustomIcon name="icon-location-pin" fill="colorWhiteBg" />{' '}
+                  Location: {currentTour.startLocation.description}
+                </div>
+              </FeatureContainer>
             </div>
           </StyledSectionDescription>
+          <div>
+            <Map currentTour={currentTour} />
+          </div>
           <TourCtaBar currentTour={currentTour} />
         </Fragment>
       )}
