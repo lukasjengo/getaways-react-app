@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { hideModal } from 'redux/modal/modalActions';
 
@@ -10,7 +9,9 @@ import ForgotPasswordForm from 'components/authForm/ForgotPasswordForm';
 
 import { ModalOverlay } from './styles';
 
-const Modal = ({ modalType, hideModal }) => {
+const Modal = () => {
+  const modalType = useSelector(state => state.modal.modalType);
+  const dispatch = useDispatch();
   const modalNode = useRef(null);
 
   useEffect(() => {
@@ -29,7 +30,7 @@ const Modal = ({ modalType, hideModal }) => {
     // if (modalNode.current === e.target) {
     if (modalNode.current === e.target) {
       // outside click
-      hideModal();
+      dispatch(hideModal());
     }
   };
 
@@ -44,13 +45,4 @@ const Modal = ({ modalType, hideModal }) => {
   );
 };
 
-Modal.propTypes = {
-  modalType: PropTypes.string,
-  hideModal: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = state => ({
-  modalType: state.modal.modalType,
-});
-
-export default connect(mapStateToProps, { hideModal })(Modal);
+export default Modal;

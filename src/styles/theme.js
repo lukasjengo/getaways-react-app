@@ -1,4 +1,4 @@
-const theme = {
+const myTheme = {
   // COLORS
   colorPrimary: '#52de97',
   colorPrimaryDark: '#42b883',
@@ -23,4 +23,4 @@ const theme = {
   shadowDark1: '0 3px .5rem rgba(0, 0, 0, .3)',
 };
 
-export default theme;
+export { myTheme };

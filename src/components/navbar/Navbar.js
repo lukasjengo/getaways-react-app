@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { showModal } from 'redux/modal/modalActions';
 
@@ -17,7 +16,10 @@ import {
   StyledButton,
 } from './styles';
 
-const Navbar = ({ showModal, auth }) => {
+const Navbar = () => {
+  const auth = useSelector(state => state.auth);
+  const dispatch = useDispatch();
+
   return (
     <StyledHeader>
       <StyledNav>
@@ -35,7 +37,7 @@ const Navbar = ({ showModal, auth }) => {
             <span>{auth.user.name.split(' ')[0]}</span>
           </StyledLink>
         ) : (
-          <StyledButton onClick={() => showModal('login')}>
+          <StyledButton onClick={() => dispatch(showModal('login'))}>
             <CustomIcon name="icon-user" />
             <span>Log in</span>
           </StyledButton>
@@ -45,13 +47,4 @@ const Navbar = ({ showModal, auth }) => {
   );
 };
 
-Navbar.propTypes = {
-  showModal: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
-};
-
-const mapStateToProps = state => ({
-  auth: state.auth,
-});
-
-export default connect(mapStateToProps, { showModal })(Navbar);
+export default Navbar;

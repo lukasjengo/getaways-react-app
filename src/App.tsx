@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 
 import { isLoggedIn } from 'redux/auth/authActions';
@@ -18,17 +17,18 @@ import Tourpage from 'pages/tourpage/Tourpage';
 
 // Styles
 import GlobalStyles from 'styles/GlobalStyles';
-import theme from 'styles/theme';
+import { myTheme } from 'styles/theme';
 
-const App = ({ isLoggedIn, getTours }) => {
+const App: React.FC = () => {
+  const dispatch = useDispatch();
   useEffect(() => {
-    isLoggedIn();
-    getTours();
+    dispatch(isLoggedIn());
+    dispatch(getTours());
     //eslint-disable-next-line
   }, []);
   return (
     <Fragment>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={myTheme}>
         <GlobalStyles />
         <Alert />
         <Modal />
@@ -42,9 +42,4 @@ const App = ({ isLoggedIn, getTours }) => {
   );
 };
 
-App.propTypes = {
-  isLoggedIn: PropTypes.func.isRequired,
-  getTours: PropTypes.func.isRequired,
-};
-
-export default connect(null, { isLoggedIn, getTours })(App);
+export default App;

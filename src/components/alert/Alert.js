@@ -1,10 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { AlertWrapper, StyledAlert } from './styles';
 
-const Alert = ({ alerts }) => {
+const Alert = () => {
+  const alerts = useSelector(state => state.alerts);
   return (
     <AlertWrapper>
       {alerts.map(alert => (
@@ -16,12 +16,4 @@ const Alert = ({ alerts }) => {
   );
 };
 
-Alert.propTypes = {
-  alerts: PropTypes.array.isRequired,
-};
-
-const mapStateToProps = state => ({
-  alerts: state.alerts,
-});
-
-export default connect(mapStateToProps)(Alert);
+export default Alert;
