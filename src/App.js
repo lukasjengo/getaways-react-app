@@ -19,7 +19,7 @@ import Tourpage from 'pages/tourpage/Tourpage';
 import GlobalStyles from 'styles/GlobalStyles';
 import { myTheme } from 'styles/theme';
 
-const App: React.FC = () => {
+const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(isLoggedIn());
