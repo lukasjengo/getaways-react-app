@@ -1,8 +1,9 @@
-import { SET_ALERT, REMOVE_ALERT } from './alertTypes';
+import { SET_ALERT, REMOVE_ALERT, AlertActionTypes } from './alertTypes';
+import { Alert } from 'models/Alert';
 
-const initialState = [];
+const initialState: Alert[] = [];
 
-export default (state = initialState, action) => {
+export default (state = initialState, action: AlertActionTypes) => {
   const { type, payload } = action;
 
   switch (type) {

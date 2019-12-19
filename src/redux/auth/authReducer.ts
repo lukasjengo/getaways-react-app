@@ -10,16 +10,25 @@ import {
   FORGOT_PASSWORD_FAILURE,
   LOGOUT,
   DELETE_ACCOUNT,
+  AuthActionTypes,
 } from './authTypes';
+import { User } from 'models/User';
 
-const initialState = {
+export interface AuthState {
+  isAuthorized: null | boolean;
+  user: null | User;
+  isLoading: boolean;
+  error: null | string;
+}
+
+const initialState: AuthState = {
   isAuthorized: null,
   user: null,
   isLoading: false,
   error: null,
 };
 
-export default (state = initialState, action) => {
+export default (state = initialState, action: AuthActionTypes) => {
   const { type, payload } = action;
 
   switch (type) {
