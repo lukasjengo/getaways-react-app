@@ -1,3 +1,4 @@
+import { Action } from 'redux';
 import { User } from 'models/User';
 
 export const REGISTER_REQUEST = 'REGISTER_REQUEST';
@@ -12,48 +13,35 @@ export const FORGOT_PASSWORD_FAILURE = 'FORGOT_PASSWORD_FAILURE';
 export const LOGOUT = 'LOGOUT';
 export const DELETE_ACCOUNT = 'DELETE_ACCOUNT';
 
-export interface RegisterRequestAction {
-  type: typeof REGISTER_REQUEST;
-  payload?: undefined;
-}
+export interface RegisterRequestAction
+  extends Action<typeof REGISTER_REQUEST> {}
 
-export interface RegisterSuccessAction {
-  type: typeof REGISTER_SUCCESS;
+export interface RegisterSuccessAction extends Action<typeof REGISTER_SUCCESS> {
   payload: User;
 }
 
-export interface RegisterFailureAction {
-  type: typeof REGISTER_FAILURE;
+export interface RegisterFailureAction extends Action<typeof REGISTER_FAILURE> {
   payload: string;
 }
 
-export interface LoginRequestAction {
-  type: typeof LOGIN_REQUEST;
-  payload?: undefined;
-}
+export interface LoginRequestAction extends Action<typeof LOGIN_REQUEST> {}
 
-export interface LoginSuccessAction {
-  type: typeof LOGIN_SUCCESS;
+export interface LoginSuccessAction extends Action<typeof LOGIN_SUCCESS> {
   payload: User;
 }
 
-export interface LoginFailureAction {
-  type: typeof LOGIN_FAILURE;
+export interface LoginFailureAction extends Action<typeof LOGIN_FAILURE> {
   payload: string;
 }
 
-export interface ForgotPasswordRequestAction {
-  type: typeof FORGOT_PASSWORD_REQUEST;
-  payload?: undefined;
-}
+export interface ForgotPasswordRequestAction
+  extends Action<typeof FORGOT_PASSWORD_REQUEST> {}
 
-export interface ForgotPasswordSuccessAction {
-  type: typeof FORGOT_PASSWORD_SUCCESS;
-  payload?: undefined;
-}
+export interface ForgotPasswordSuccessAction
+  extends Action<typeof FORGOT_PASSWORD_SUCCESS> {}
 
-export interface ForgotPasswordFailureAction {
-  type: typeof FORGOT_PASSWORD_FAILURE;
+export interface ForgotPasswordFailureAction
+  extends Action<typeof FORGOT_PASSWORD_FAILURE> {
   payload: string;
 }
 

@@ -108,7 +108,7 @@ export const forgotPassword: ActionCreator<ThunkAction<
     dispatch(hideModal());
     dispatch({ type: FORGOT_PASSWORD_SUCCESS });
     dispatch(
-      //@ts-ignore
+      // @ts-ignore
       setAlert('Pasword reset instructions were sent to your email', 'success')
     );
   } catch (err) {

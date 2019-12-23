@@ -1,3 +1,4 @@
+import { Tour } from 'models/Tour';
 import {
   GET_TOURS_REQUEST,
   GET_TOURS_SUCCESS,
@@ -6,22 +7,31 @@ import {
   GET_CURRENT_TOUR_SUCCESS,
   GET_CURRENT_TOUR_FAILURE,
   GET_FILTER_TEXT,
+  TourActionTypes,
 } from './tourTypes';
 
-const initialState = {
+export interface TourState {
+  readonly allTours: Tour[];
+  readonly currentTour: null | Tour;
+  readonly filter: {
+    text: string;
+  };
+  readonly isLoading: boolean;
+  readonly error: null | string;
+}
+
+const initialState: TourState = {
   allTours: [],
   currentTour: null,
   filter: {
-    text: null,
+    text: '',
   },
   isLoading: false,
   error: null,
 };
 
-export default (state = initialState, action) => {
-  const { type, payload } = action;
-
-  switch (type) {
+export default (state = initialState, action: TourActionTypes): TourState => {
+  switch (action.type) {
     case GET_TOURS_REQUEST:
     case GET_CURRENT_TOUR_REQUEST:
       return {
@@ -31,13 +41,13 @@ export default (state = initialState, action) => {
     case GET_TOURS_SUCCESS:
       return {
         ...state,
-        allTours: payload,
+        allTours: action.payload,
         isLoading: false,
       };
     case GET_CURRENT_TOUR_SUCCESS:
       return {
         ...state,
-        currentTour: payload,
+        currentTour: action.payload,
         isLoading: false,
       };
     case GET_TOURS_FAILURE:
@@ -45,12 +55,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        error: payload,
+        error: action.payload,
       };
     case GET_FILTER_TEXT:
       return {
         ...state,
-        filter: { ...state.filter, text: payload },
+        filter: { ...state.filter, text: action.payload },
       };
     default:
       return state;

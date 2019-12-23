@@ -24,3 +24,5 @@ export const setAlert = (
     timeout
   );
 };
+
+export type AlertActionCreator = typeof setAlert;

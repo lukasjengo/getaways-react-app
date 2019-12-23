@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect';
+import { AppState } from 'redux/root-reducer';
 
-const selectTour = state => state.tour;
+const selectTour = (state: AppState) => state.tour;
 
 export const selectAllTours = createSelector(
   [selectTour],

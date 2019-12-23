@@ -1,4 +1,3 @@
-import { Dispatch } from 'redux';
 import { ModalTypes } from 'models/Modal';
 
 import { SHOW_MODAL, HIDE_MODAL, ModalActionTypes } from './modalTypes';

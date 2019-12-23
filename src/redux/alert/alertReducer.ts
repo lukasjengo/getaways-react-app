@@ -1,16 +1,16 @@
 import { SET_ALERT, REMOVE_ALERT, AlertActionTypes } from './alertTypes';
 import { Alert } from 'models/Alert';
 
-const initialState: Alert[] = [];
+export type AlertState = readonly Alert[];
 
-export default (state = initialState, action: AlertActionTypes) => {
-  const { type, payload } = action;
+const initialState: AlertState = [];
 
-  switch (type) {
+export default (state = initialState, action: AlertActionTypes): AlertState => {
+  switch (action.type) {
     case SET_ALERT:
-      return [...state, payload];
+      return [...state, action.payload];
     case REMOVE_ALERT:
-      return state.filter(alert => alert.id !== payload);
+      return state.filter(alert => alert.id !== action.payload);
     default:
       return state;
   }

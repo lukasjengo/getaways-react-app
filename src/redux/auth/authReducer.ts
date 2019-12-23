@@ -15,10 +15,10 @@ import {
 import { User } from 'models/User';
 
 export interface AuthState {
-  isAuthorized: null | boolean;
-  user: null | User;
-  isLoading: boolean;
-  error: null | string;
+  readonly isAuthorized: null | boolean;
+  readonly user: null | User;
+  readonly isLoading: boolean;
+  readonly error: null | string;
 }
 
 const initialState: AuthState = {
@@ -28,10 +28,8 @@ const initialState: AuthState = {
   error: null,
 };
 
-export default (state = initialState, action: AuthActionTypes) => {
-  const { type, payload } = action;
-
-  switch (type) {
+export default (state = initialState, action: AuthActionTypes): AuthState => {
+  switch (action.type) {
     case LOGIN_REQUEST:
     case REGISTER_REQUEST:
     case FORGOT_PASSWORD_REQUEST:
@@ -44,7 +42,7 @@ export default (state = initialState, action: AuthActionTypes) => {
       return {
         ...state,
         isAuthorized: true,
-        user: payload,
+        user: action.payload,
         isLoading: false,
         error: null,
       };
@@ -62,7 +60,7 @@ export default (state = initialState, action: AuthActionTypes) => {
         isAuthorized: false,
         user: null,
         isLoading: false,
-        error: payload,
+        error: action.payload,
       };
     default:
       return state;

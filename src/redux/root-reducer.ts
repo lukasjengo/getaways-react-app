@@ -12,4 +12,6 @@ const rootReducer = combineReducers({
   alerts: alertReducer,
 });
 
+export type AppState = ReturnType<typeof rootReducer>;
+
 export default rootReducer;
