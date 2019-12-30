@@ -8,7 +8,11 @@ export const AlertWrapper = styled.div`
   font-size: 1.5rem;
 `;
 
-export const StyledAlert = styled.div`
+export interface StyledAlertProps {
+  type: string;
+}
+
+export const StyledAlert = styled.div<StyledAlertProps>`
   padding: 1rem 2rem;
   margin-bottom: 1rem;
   border-radius: 3px;

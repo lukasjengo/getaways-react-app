@@ -2,9 +2,10 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import { AlertWrapper, StyledAlert } from './styles';
+import { AppState } from 'redux/root-reducer';
 
-const Alert = () => {
-  const alerts = useSelector(state => state.alerts);
+const Alert: React.FC = () => {
+  const alerts = useSelector((state: AppState) => state.alerts);
   return (
     <AlertWrapper>
       {alerts.map(alert => (
