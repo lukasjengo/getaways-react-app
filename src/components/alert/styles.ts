@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { AlertTypes } from 'models/Alert';
 
 export const AlertWrapper = styled.div`
   position: fixed;
@@ -8,8 +9,8 @@ export const AlertWrapper = styled.div`
   font-size: 1.5rem;
 `;
 
-export interface StyledAlertProps {
-  type: string;
+interface StyledAlertProps {
+  type: AlertTypes;
 }
 
 export const StyledAlert = styled.div<StyledAlertProps>`

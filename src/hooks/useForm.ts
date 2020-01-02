@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export interface FormStructure {
-  [key: string]: any;
+  [key: string]: string;
 }
 
 export const useForm = (
@@ -10,7 +10,7 @@ export const useForm = (
 ) => {
   const [formData, setFormData] = useState(initialState);
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange: (event: React.ChangeEvent<HTMLInputElement>) => void = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 

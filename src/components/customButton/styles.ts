@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
-export const StyledButton = styled.button`
+interface ButtonProps {
+  size?: string;
+  color?: string;
+}
+
+export const StyledButton = styled.button<ButtonProps>`
   background-color: ${({ color, theme }) =>
     (color === 'primary' && `${theme.colorPrimary}`) ||
     (color === 'secondary' && `${theme.colorSecondary}`) ||
@@ -23,7 +28,7 @@ export const StyledButton = styled.button`
   }
 `;
 
-export const StyledButtonUnderline = styled.button`
+export const StyledButtonUnderline = styled.button<ButtonProps>`
   color: ${props => props.theme.colorSecondary};
   font-size: ${({ size }) => (size ? `${size}` : '1.2rem')};
   transition: all 0.2s;

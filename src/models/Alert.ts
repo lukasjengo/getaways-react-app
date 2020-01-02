@@ -1,5 +1,7 @@
+export type AlertTypes = 'danger' | 'success';
+
 export interface Alert {
   msg: string;
-  alertType: 'danger' | 'success';
+  alertType: AlertTypes;
   id: string;
 }
