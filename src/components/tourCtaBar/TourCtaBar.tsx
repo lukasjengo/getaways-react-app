@@ -11,7 +11,13 @@ import {
   StyledRatingContainer,
 } from './styles';
 
-const TourCtaBar = ({ currentTour }) => {
+import { Tour } from 'models/Tour';
+
+interface TourCtaBarProps {
+  currentTour: Tour;
+}
+
+const TourCtaBar: React.FC<TourCtaBarProps> = ({ currentTour }) => {
   return (
     <StyledContainer>
       <StyledFlexContainer>

@@ -1,14 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector, shallowEqual } from 'react-redux';
 
 import { selectFilteredTours } from 'redux/tour/tourSelectors';
 
 import FilteredListDropdownItem from 'components/filteredListDropdownItem/filteredListDropdownItem';
 
 import { ModalWrapper } from './styles';
+import { AppState } from 'redux/root-reducer';
 
-const FilteredListDropdown = ({ filteredTours }) => {
+const FilteredListDropdown = () => {
+  const filteredTours = useSelector(
+    (state: AppState) => selectFilteredTours(state),
+    shallowEqual
+  );
   return (
     <ModalWrapper>
       {filteredTours.map(tour => (
@@ -26,12 +30,4 @@ const FilteredListDropdown = ({ filteredTours }) => {
   );
 };
 
-FilteredListDropdownItem.propTypes = {
-  filteredTours: PropTypes.array,
-};
-
-const mapStateToProps = state => ({
-  filteredTours: selectFilteredTours(state),
-});
-
-export default connect(mapStateToProps)(FilteredListDropdown);
+export default FilteredListDropdown;

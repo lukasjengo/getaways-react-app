@@ -7,7 +7,7 @@ import ImageGallery from 'components/imageGallery/ImageGallery';
 import TourCtaBar from 'components/tourCtaBar/TourCtaBar';
 import Spinner from 'components/spinner/Spinner';
 import CustomIcon from 'components/customIcon/CustomIcon';
-import Map from 'components/map/Map';
+import TourMap from 'components/tourMap/TourMap';
 
 import {
   StyledMain,
@@ -68,7 +68,7 @@ const Tourpage = ({ match, currentTour, getCurrentTour, isLoading }) => {
             </div>
           </StyledSectionDescription>
           <div>
-            <Map currentTour={currentTour} />
+            <TourMap currentTour={currentTour} />
           </div>
           <TourCtaBar currentTour={currentTour} />
         </Fragment>

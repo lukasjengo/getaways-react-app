@@ -40,7 +40,11 @@ export const HeadingWrapper = styled.div`
   }
 `;
 
-export const StyledImageContainer = styled.div`
+interface StyledImageContainerProps {
+  imageCover: string;
+}
+
+export const StyledImageContainer = styled.div<StyledImageContainerProps>`
   background-image: ${({ imageCover }) =>
     `url(${process.env.REACT_APP_SERVER_UPLOADS_URL}/tours/${imageCover})`};
   background-size: cover;

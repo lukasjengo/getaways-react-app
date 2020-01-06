@@ -3,14 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { hideModal } from 'redux/modal/modalActions';
 
-import LoginForm from 'components/authForm/LoginForm';
-import RegisterForm from 'components/authForm/RegisterForm';
-import ForgotPasswordForm from 'components/authForm/ForgotPasswordForm';
+import LoginForm from 'components/authForms/LoginForm';
+import RegisterForm from 'components/authForms/RegisterForm';
+import ForgotPasswordForm from 'components/authForms/ForgotPasswordForm';
 
 import { ModalOverlay } from './styles';
+import { AppState } from 'redux/root-reducer';
 
-const Modal = () => {
-  const modalType = useSelector(state => state.modal.modalType);
+const Modal: React.FC = () => {
+  const modalType = useSelector((state: AppState) => state.modal.modalType);
   const dispatch = useDispatch();
   const modalNode = useRef(null);
 
@@ -26,8 +27,7 @@ const Modal = () => {
     //eslint-disable-next-line
   }, [modalType]);
 
-  const handleClickOutside = e => {
-    // if (modalNode.current === e.target) {
+  const handleClickOutside = (e: any) => {
     if (modalNode.current === e.target) {
       // outside click
       dispatch(hideModal());

@@ -1,8 +1,16 @@
-export interface GeoPoint {
+export interface StartLocation {
   type: string;
   coordinates: number[];
   description: string;
   address: string;
+}
+
+export interface Location {
+  _id: string;
+  type: string;
+  coordinates: number[];
+  description: string;
+  day: number;
 }
 
 export interface Guide {
@@ -26,8 +34,8 @@ export interface Tour {
   summary: string;
   description: string;
   imageCover: string;
-  locations: GeoPoint[];
-  startLocation: GeoPoint;
+  locations: Location[];
+  startLocation: StartLocation;
   ratingsAverage: number;
   ratingsQuantity: number;
   images: string[];

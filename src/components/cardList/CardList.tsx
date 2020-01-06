@@ -1,14 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-
-import { selectAllTours } from 'redux/tour/tourSelectors';
+import { useSelector, shallowEqual } from 'react-redux';
 
 import CardListItem from 'components/cardListItem/CardListItem';
 
 import { StyledList } from './styles';
+import { AppState } from 'redux/root-reducer';
 
-const CardList = ({ tours }) => {
+const CardList: React.FC = () => {
+  const tours = useSelector(
+    (state: AppState) => state.tour.allTours,
+    shallowEqual
+  );
   return (
     <StyledList>
       {tours.map(tour => (
@@ -26,12 +28,4 @@ const CardList = ({ tours }) => {
   );
 };
 
-CardList.propTypes = {
-  tours: PropTypes.array.isRequired,
-};
-
-const mapStateToProps = state => ({
-  tours: selectAllTours(state),
-});
-
-export default connect(mapStateToProps)(CardList);
+export default CardList;

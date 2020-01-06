@@ -4,13 +4,22 @@ const spin = keyframes`
   to { transform: rotate(360deg); }
 `;
 
-export const SpinnerContainer = styled.div`
+interface SpinnerContainerProps {
+  size?: string;
+}
+
+export const SpinnerContainer = styled.div<SpinnerContainerProps>`
   display: flex;
   justify-content: center;
   ${({ size }) => size !== 'small' && 'margin: 8rem 0;'}
 `;
 
-export const StyledSpinner = styled.div`
+interface StyledSpinnerProps {
+  size?: string;
+  color: string;
+}
+
+export const StyledSpinner = styled.div<StyledSpinnerProps>`
   display: inline-block;
   text-align: center;
   ${({ size }) =>
@@ -18,6 +27,6 @@ export const StyledSpinner = styled.div`
     'width: 5rem; height: 5rem'}
   border: 3px solid rgba(0, 0, 0, 0.3);
   border-radius: 50%;
-  border-top-color: ${({ color, theme }) => theme[color]};
+  border-top-color: ${({ color, theme }) => (theme as any)[color]};
   animation: ${spin} 1s ease-in-out infinite;
 `;

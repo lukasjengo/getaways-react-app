@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 
 import { showModal } from 'redux/modal/modalActions';
 
@@ -15,9 +15,10 @@ import {
   StyledLink,
   StyledButton,
 } from './styles';
+import { AppState } from 'redux/root-reducer';
 
-const Navbar = () => {
-  const auth = useSelector(state => state.auth);
+const Navbar: React.FC = () => {
+  const auth = useSelector((state: AppState) => state.auth, shallowEqual);
   const dispatch = useDispatch();
 
   return (
@@ -28,7 +29,7 @@ const Navbar = () => {
         </LogoWrapperLink>
         <SearchInput />
         {/* REFACTORING */}
-        {auth.isAuthorized ? (
+        {auth.isAuthorized && auth.user !== null ? (
           <StyledLink to="/dashboard">
             <img
               src={`${process.env.REACT_APP_SERVER_UPLOADS_URL}/users/${auth.user.photo}`}

@@ -1,7 +1,6 @@
-import React, { useRef, useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useRef, useState, useEffect, MouseEvent } from 'react';
 import { useHistory } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { getFilterText } from 'redux/tour/tourActions';
 
@@ -9,30 +8,31 @@ import FilteredListDropdown from 'components/filteredListDropdown/filteredListDr
 
 import { StyledForm, StyledInput } from './styles';
 
-const SearchInput = ({ getFilterText }) => {
-  const formNode = useRef(null);
-  const inputNode = useRef(null);
+const SearchInput: React.FC = () => {
+  const formNode = useRef<HTMLFormElement>(null);
+  const inputNode = useRef<HTMLInputElement>(null);
 
   const [visible, setVisible] = useState(false);
-
   let history = useHistory();
+
+  const dispatch = useDispatch();
   useEffect(
     () =>
       history.listen(() => {
         setVisible(false);
-        inputNode.current.value = '';
+        inputNode.current!.value = '';
       }),
     //eslint-disable-next-line
     []
   );
 
-  const handleClickOutside = e => {
-    if (formNode.current.contains(e.target)) {
+  const handleClickOutside = (e: any) => {
+    if (formNode.current!.contains(e.target)) {
       // outside click
       return;
     }
     setVisible(false);
-    inputNode.current.value = '';
+    inputNode.current!.value = '';
   };
 
   useEffect(() => {
@@ -47,8 +47,8 @@ const SearchInput = ({ getFilterText }) => {
     //eslint-disable-next-line
   }, [visible]);
 
-  const onChange = e => {
-    getFilterText(e.target.value);
+  const onChange: (event: React.ChangeEvent<HTMLInputElement>) => void = e => {
+    dispatch(getFilterText(e.target.value));
     if (e.target.value.length !== 0) {
       setVisible(true);
     } else {
@@ -70,8 +70,4 @@ const SearchInput = ({ getFilterText }) => {
   );
 };
 
-SearchInput.propTypes = {
-  getFilterText: PropTypes.func.isRequired,
-};
-
-export default connect(null, { getFilterText })(SearchInput);
+export default SearchInput;

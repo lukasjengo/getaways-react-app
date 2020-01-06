@@ -1,10 +1,8 @@
 import React from 'react';
 import { StyledButton, StyledButtonUnderline } from './styles';
 
-type colors = 'primary' | 'secondary';
-
 interface CustomButtonProps {
-  color?: colors;
+  color?: 'primary' | 'secondary';
   isUnderlined?: boolean | undefined;
   size?: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
