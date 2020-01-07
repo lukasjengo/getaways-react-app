@@ -42,7 +42,7 @@ const ForgotPasswordForm: React.FC = () => {
             </InputWrapper>
             <CustomButton color="primary" type="submit">
               {isLoading ? (
-                <Spinner size="small" color="colorWhiteBg" />
+                <Spinner size="small" color="whiteBg" />
               ) : (
                 'Reset password'
               )}

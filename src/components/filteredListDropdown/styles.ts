@@ -6,7 +6,7 @@ export const ModalWrapper = styled.ul`
   left: 0;
   width: 100%;
   max-height: 25rem;
-  background-color: ${props => props.theme.colorWhiteBg};
+  background-color: ${props => props.theme.colors.whiteBg};
   list-style: none;
   z-index: 50;
   overflow: auto;

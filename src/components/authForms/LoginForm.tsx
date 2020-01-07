@@ -55,11 +55,7 @@ const LoginForm = () => {
               />
             </InputWrapper>
             <CustomButton color="primary" type="submit">
-              {isLoading ? (
-                <Spinner size="small" color="colorWhiteBg" />
-              ) : (
-                'Login'
-              )}
+              {isLoading ? <Spinner size="small" color="whiteBg" /> : 'Login'}
             </CustomButton>
           </StyledForm>
         )}

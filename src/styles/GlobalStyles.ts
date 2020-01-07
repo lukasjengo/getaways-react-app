@@ -18,8 +18,8 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
     line-height: 1.7;
-    color: ${props => props.theme.colorGreyDark};
-    background-color: ${props => props.theme.colorWhiteBg};
+    color: ${props => props.theme.colors.greyDark};
+    background-color: ${props => props.theme.colors.whiteBg};
   }
 
   a {

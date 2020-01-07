@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const StyledHeader = styled.header`
-  box-shadow: ${props => props.theme.shadowLight1};
+  box-shadow: ${props => props.theme.shadows.light1};
   padding: 1.5rem 2.5rem;
   font-size: 1.5rem;
 `;
@@ -18,7 +18,7 @@ export const LogoWrapperLink = styled(Link)`
   svg {
     width: 3.5rem;
     height: 3.5rem;
-    fill: ${props => props.theme.colorPrimary};
+    fill: ${props => props.theme.colors.primary};
   }
 `;
 

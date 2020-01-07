@@ -11,10 +11,10 @@ export const StyledInput = styled.input`
   border-radius: 2px;
   outline: none;
   min-width: 45rem;
-  color: ${props => props.theme.colorBlack};
-  background-color: ${props => props.theme.colorGreyLight};
+  color: ${props => props.theme.colors.black};
+  background-color: ${props => props.theme.colors.greyLight};
 
   &:focus {
-    border: 1px solid ${props => props.theme.colorPrimary};
+    border: 1px solid ${props => props.theme.colors.primary};
   }
 `;

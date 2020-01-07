@@ -2,25 +2,28 @@ import 'styled-components';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
-    colorPrimary: string;
-    colorPrimaryDark: string;
+    colors: {
+      primary: string;
+      primaryDark: string;
 
-    colorSecondary: string;
-    colorSecondaryDark: string;
-    colorTertiary: string;
+      secondary: string;
+      secondaryDark: string;
+      tertiary: string;
 
-    colorGreyDark: string;
-    colorGreyLight: string;
+      greyDark: string;
+      greyLight: string;
 
-    colorSuccess: string;
-    colorDanger: string;
+      success: string;
+      danger: string;
 
-    colorWhite: string;
-    colorWhiteBg: string;
-    colorBlack: string;
-
-    shadowLight1: string;
-    shadowLight2: string;
-    shadowDark1: string;
+      white: string;
+      whiteBg: string;
+      black: string;
+    };
+    shadows: {
+      light1: string;
+      light2: string;
+      dark1: string;
+    };
   }
 }

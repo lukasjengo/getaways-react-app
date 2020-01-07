@@ -4,7 +4,7 @@ export const FormWrapper = styled.div`
   max-width: 40rem;
   margin: 10rem auto;
   padding: 3rem 4rem;
-  background-color: ${props => props.theme.colorWhiteBg};
+  background-color: ${props => props.theme.colors.whiteBg};
 `;
 
 export const StyledForm = styled.form`
@@ -32,19 +32,19 @@ export const InputWrapper = styled.div`
     font: inherit;
     display: block;
     outline: none;
-    border: 1px solid ${props => props.theme.colorGreyLight};
+    border: 1px solid ${props => props.theme.colors.greyLight};
     width: 100%;
     border-radius: 3px;
     padding: 0.75rem 1rem;
-    color: ${props => props.theme.colorBlack};
-    background-color: ${props => props.theme.colorWhite};
+    color: ${props => props.theme.colors.black};
+    background-color: ${props => props.theme.colors.white};
 
     &:focus {
-      border: 1px solid ${props => props.theme.colorSuccess};
+      border: 1px solid ${props => props.theme.colors.success};
     }
 
     &:focus:invalid {
-      border: 1px solid ${props => props.theme.colorDanger};
+      border: 1px solid ${props => props.theme.colors.danger};
     }
   }
 `;

@@ -27,7 +27,7 @@ const Modal: React.FC = () => {
     //eslint-disable-next-line
   }, [modalType]);
 
-  const handleClickOutside = (e: any) => {
+  const handleClickOutside = (e: MouseEvent) => {
     if (modalNode.current === e.target) {
       // outside click
       dispatch(hideModal());

@@ -13,7 +13,7 @@ export const StyledListItem = styled.li`
       display: block;
       width: 0;
       height: 2px;
-      background-color: ${props => props.theme.colorPrimary};
+      background-color: ${props => props.theme.colors.primary};
       transition: all 0.4s;
     }
   }

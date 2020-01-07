@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, MouseEvent } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
@@ -26,8 +26,8 @@ const SearchInput: React.FC = () => {
     []
   );
 
-  const handleClickOutside = (e: any) => {
-    if (formNode.current!.contains(e.target)) {
+  const handleClickOutside = (e: MouseEvent) => {
+    if (formNode.current!.contains(e.target as Node)) {
       // outside click
       return;
     }

@@ -17,9 +17,9 @@ export const StyledAlert = styled.div<StyledAlertProps>`
   padding: 1rem 2rem;
   margin-bottom: 1rem;
   border-radius: 3px;
-  color: ${props => props.theme.colorWhite};
-  box-shadow: ${props => props.theme.shadowLight1};
+  color: ${props => props.theme.colors.white};
+  box-shadow: ${props => props.theme.shadows.light1};
   ${({ type, theme }) =>
-    (type === 'success' && `background-color: ${theme.colorSuccess}`) ||
-    (type === 'danger' && `background-color: ${theme.colorDanger}`)};
+    (type === 'success' && `background-color: ${theme.colors.success}`) ||
+    (type === 'danger' && `background-color: ${theme.colors.danger}`)};
 `;

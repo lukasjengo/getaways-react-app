@@ -1,25 +1,6 @@
-export interface StartLocation {
-  type: string;
-  coordinates: number[];
-  description: string;
-  address: string;
-}
-
-export interface Location {
-  _id: string;
-  type: string;
-  coordinates: number[];
-  description: string;
-  day: number;
-}
-
-export interface Guide {
-  _id: string;
-  name: string;
-  email: string;
-  role: string;
-  photo: string;
-}
+import {StartLocation} from './StartLocation'
+import {Guide} from './Guide'
+import {Location} from './Location'
 
 export interface Tour {
   _id: string;

@@ -10,7 +10,7 @@ export const StyledLi = styled.li`
   }
 
   &:hover {
-    background-color: ${props => props.theme.colorGreyLight};
+    background-color: ${props => props.theme.colors.greyLight};
   }
 `;
 

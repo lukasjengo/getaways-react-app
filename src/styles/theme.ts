@@ -1,28 +1,35 @@
 import { DefaultTheme } from 'styled-components';
 
+export type ThemeColorTypes = Extract<keyof DefaultTheme['colors'], string>;
+export type ThemeShadowTypes = Extract<keyof DefaultTheme['shadows'], string>;
+
 const myTheme: DefaultTheme = {
   // COLORS
-  colorPrimary: '#52de97',
-  colorPrimaryDark: '#42b883',
+  colors: {
+    primary: '#52de97',
+    primaryDark: '#42b883',
 
-  colorSecondary: '#8186d5',
-  colorSecondaryDark: '#494ca2',
-  colorTertiary: '#F8E9A1',
+    secondary: '#8186d5',
+    secondaryDark: '#494ca2',
+    tertiary: '#F8E9A1',
 
-  colorGreyDark: '#474B4F',
-  colorGreyLight: '#f1f1f1',
+    greyDark: '#474B4F',
+    greyLight: '#f1f1f1',
 
-  colorSuccess: '#4dd599',
-  colorDanger: '#ef4b4b',
+    success: '#4dd599',
+    danger: '#ef4b4b',
 
-  colorWhite: '#ffffff',
-  colorWhiteBg: '#fafafa',
-  colorBlack: '#222629',
+    white: '#ffffff',
+    whiteBg: '#fafafa',
+    black: '#222629',
+  },
 
   // SHADOWS
-  shadowLight1: '0 3px 1.7rem rgba(237, 234, 229, .6)',
-  shadowLight2: '0 2px .5rem rgba(237, 234, 229, .6)',
-  shadowDark1: '0 3px .5rem rgba(0, 0, 0, .3)',
+  shadows: {
+    light1: '0 3px 1.7rem rgba(237, 234, 229, .6)',
+    light2: '0 2px .5rem rgba(237, 234, 229, .6)',
+    dark1: '0 3px .5rem rgba(0, 0, 0, .3)',
+  },
 };
 
 export { myTheme };

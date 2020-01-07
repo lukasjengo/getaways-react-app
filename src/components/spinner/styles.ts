@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import { ThemeColorTypes } from 'styles/theme';
 
 const spin = keyframes`
   to { transform: rotate(360deg); }
@@ -16,7 +17,7 @@ export const SpinnerContainer = styled.div<SpinnerContainerProps>`
 
 interface StyledSpinnerProps {
   size?: string;
-  color: string;
+  color: ThemeColorTypes;
 }
 
 export const StyledSpinner = styled.div<StyledSpinnerProps>`
@@ -27,6 +28,6 @@ export const StyledSpinner = styled.div<StyledSpinnerProps>`
     'width: 5rem; height: 5rem'}
   border: 3px solid rgba(0, 0, 0, 0.3);
   border-radius: 50%;
-  border-top-color: ${({ color, theme }) => (theme as any)[color]};
+  border-top-color: ${({ color, theme }) => theme.colors[color]};
   animation: ${spin} 1s ease-in-out infinite;
 `;

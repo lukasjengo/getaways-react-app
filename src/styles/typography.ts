@@ -9,7 +9,7 @@ export const HeadingPrimary = styled.h1`
     display: block;
     width: 15rem;
     height: 2px;
-    background-color: ${({ theme }) => theme.colorPrimary};
+    background-color: ${({ theme }) => theme.colors.primary};
   }
 `;
 

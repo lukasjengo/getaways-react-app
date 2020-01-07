@@ -6,8 +6,8 @@ export const StyledContainer = styled.div`
   left: 0;
   width: 100%;
   padding: 1rem 2rem;
-  background-color: ${({ theme }) => theme.colorWhite};
-  box-shadow: ${({ theme }) => theme.shadowDark1};
+  background-color: ${({ theme }) => theme.colors.white};
+  box-shadow: ${({ theme }) => theme.shadows.dark1};
   z-index: 500;
 `;
 
