@@ -1,16 +1,17 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { myTheme } from 'styles/theme';
 import rootReducer from 'redux/root-reducer';
+import thunk from 'redux-thunk';
 
 const customRender = (
   ui,
   {
     initialState,
-    store = createStore(rootReducer, initialState),
+    store = createStore(rootReducer, initialState, applyMiddleware(thunk)),
     ...renderOptions
   } = {}
 ) => {

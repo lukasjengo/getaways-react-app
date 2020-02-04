@@ -30,7 +30,7 @@ const Tourpage = ({ match, currentTour, getCurrentTour, isLoading }) => {
   return (
     <StyledMain>
       {isLoading || currentTour === null ? (
-        <Spinner color="colorPrimary" />
+        <Spinner color="primary" />
       ) : (
         <Fragment>
           <StyledSectionTop>
@@ -43,25 +43,25 @@ const Tourpage = ({ match, currentTour, getCurrentTour, isLoading }) => {
               images={currentTour.images}
             />
           </StyledSectionTop>
-          <StyledSectionDescription background="colorPrimary" fullWidth={true}>
+          <StyledSectionDescription>
             <div>
               <HeadingSecondary>About this tour</HeadingSecondary>
               <Paragraph>{currentTour.description}</Paragraph>
               <FeatureContainer>
                 <div>
-                  <CustomIcon name="icon-stopwatch" fill="colorWhiteBg" />{' '}
-                  Duration: {currentTour.duration} days
+                  <CustomIcon name="icon-stopwatch" fill="whiteBg" /> Duration:{' '}
+                  {currentTour.duration} days
                 </div>
                 <div>
-                  <CustomIcon name="icon-users" fill="colorWhiteBg" /> Group
-                  size: up to {currentTour.maxGroupSize}
+                  <CustomIcon name="icon-users" fill="whiteBg" /> Group size: up
+                  to {currentTour.maxGroupSize}
                 </div>
                 <div>
-                  <CustomIcon name="icon-bar-graph" fill="colorWhiteBg" />{' '}
+                  <CustomIcon name="icon-bar-graph" fill="whiteBg" />{' '}
                   Difficulty: {currentTour.difficulty}
                 </div>
                 <div>
-                  <CustomIcon name="icon-location-pin" fill="colorWhiteBg" />{' '}
+                  <CustomIcon name="icon-location-pin" fill="whiteBg" />{' '}
                   Location: {currentTour.startLocation.description}
                 </div>
               </FeatureContainer>

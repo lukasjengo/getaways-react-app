@@ -54,12 +54,14 @@ const ForgotPasswordForm: React.FC = () => {
         <CustomButton
           isUnderlined={true}
           onClick={() => dispatch(showModal('register'))}
+          type="button"
         >
           Don't have an account? Register here.
         </CustomButton>
         <CustomButton
           isUnderlined={true}
           onClick={() => dispatch(showModal('login'))}
+          type="button"
         >
           Already have an account? Login here.
         </CustomButton>

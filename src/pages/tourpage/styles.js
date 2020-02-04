@@ -15,8 +15,8 @@ export const StyledSectionTop = styled.section`
 `;
 
 export const StyledSectionDescription = styled.section`
-  background-color: ${({ theme }) => theme.colorPrimary};
-  color: ${({ theme }) => theme.colorWhite};
+  background-color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.white};
 
   div {
     padding: 5rem 0;

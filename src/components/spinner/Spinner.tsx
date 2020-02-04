@@ -9,7 +9,7 @@ interface SpinnerProps {
 }
 
 const Spinner: React.FC<SpinnerProps> = ({ size, color }) => (
-  <SpinnerContainer size={size}>
+  <SpinnerContainer size={size} data-testid="loading-spinner">
     <StyledSpinner size={size} color={color} />
   </SpinnerContainer>
 );

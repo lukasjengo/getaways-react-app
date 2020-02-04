@@ -29,7 +29,7 @@ import { ForgotPasswordForm } from 'models/ForgotPasswordForm';
 axios.defaults.withCredentials = true;
 
 export const login: ActionCreator<ThunkAction<
-  Promise<void>,
+  Promise<AuthActionTypes>,
   User | string,
   LoginForm,
   AuthActionTypes
@@ -41,13 +41,12 @@ export const login: ActionCreator<ThunkAction<
       formData
     );
     dispatch(hideModal());
-    //@ts-ignore
-    dispatch(setAlert('Login successful', 'success'));
-    dispatch({ type: LOGIN_SUCCESS, payload: res.data.data.user });
+    dispatch(setAlert('Login successful', 'success') as any);
+    return dispatch({ type: LOGIN_SUCCESS, payload: res.data.data.user });
   } catch (err) {
     dispatch({ type: LOGIN_FAILURE, payload: err.response.data.message });
-    //@ts-ignore
-    dispatch(setAlert(err.response.data.message, 'danger'));
+    // USE RETURN SO THAT THUNKACTION PROMISE CAN BE CORRECT ACTION TYPE RATHER THAN VOID
+    return dispatch(setAlert(err.response.data.message, 'danger') as any);
   }
 };
 
@@ -81,13 +80,11 @@ export const register: ActionCreator<ThunkAction<
       formData
     );
     dispatch(hideModal());
-    //@ts-ignore
-    dispatch(setAlert('Registration successful', 'success'));
+    dispatch(setAlert('Registration successful', 'success') as any);
     dispatch({ type: REGISTER_SUCCESS, payload: res.data.data.user });
   } catch (err) {
     dispatch({ type: REGISTER_FAILURE, payload: err.response.data.message });
-    //@ts-ignore
-    dispatch(setAlert(err.response.data.message, 'danger'));
+    dispatch(setAlert(err.response.data.message, 'danger') as any);
   }
 };
 
@@ -108,15 +105,16 @@ export const forgotPassword: ActionCreator<ThunkAction<
     dispatch(hideModal());
     dispatch({ type: FORGOT_PASSWORD_SUCCESS });
     dispatch(
-      // @ts-ignore
-      setAlert('Pasword reset instructions were sent to your email', 'success')
+      setAlert(
+        'Pasword reset instructions were sent to your email',
+        'success'
+      ) as any
     );
   } catch (err) {
     dispatch({
       type: FORGOT_PASSWORD_FAILURE,
       payload: err.response.data.message,
     });
-    //@ts-ignore
-    dispatch(setAlert(err.response.data.message, 'danger'));
+    dispatch(setAlert(err.response.data.message, 'danger') as any);
   }
 };
