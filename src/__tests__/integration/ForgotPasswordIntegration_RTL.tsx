@@ -13,7 +13,7 @@ const forgotPassword: jest.Mock = require('redux/auth/authActions')
   .forgotPassword;
 
 jest.mock('redux/auth/authActions', () => ({
-  forgotPassword: jest.fn(),
+  forgotPassword: jest.fn()
 }));
 
 describe('ForgotPasswordForm component', () => {
@@ -81,7 +81,7 @@ describe('ForgotPasswordForm component', () => {
 
       expect(forgotPassword).toHaveBeenCalledTimes(1);
       expect(forgotPassword).toHaveBeenCalledWith({
-        email: 'lukasjanonis@gmail.com',
+        email: 'lukasjanonis@gmail.com'
       });
     });
 

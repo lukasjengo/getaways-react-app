@@ -16,7 +16,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   size,
   onClick,
   children,
-  type,
+  type
 }) => {
   return isUnderlined ? (
     <StyledButtonUnderline size={size} onClick={onClick} type={type}>

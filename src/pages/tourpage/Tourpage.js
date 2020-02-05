@@ -13,7 +13,7 @@ import {
   StyledMain,
   StyledSectionTop,
   StyledSectionDescription,
-  FeatureContainer,
+  FeatureContainer
 } from './styles';
 import { HeadingPrimary, HeadingSecondary, Paragraph } from 'styles/typography';
 
@@ -79,7 +79,7 @@ const Tourpage = ({ match, currentTour, getCurrentTour, isLoading }) => {
 
 const mapStateToProps = state => ({
   currentTour: state.tour.currentTour,
-  isLoading: state.tour.isLoading,
+  isLoading: state.tour.isLoading
 });
 
 export default connect(mapStateToProps, { getCurrentTour })(Tourpage);

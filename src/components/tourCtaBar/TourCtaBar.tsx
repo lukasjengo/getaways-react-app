@@ -8,7 +8,7 @@ import {
   StyledFlexContainer,
   StyledLeftContainer,
   StyledRightContainer,
-  StyledRatingContainer,
+  StyledRatingContainer
 } from './styles';
 
 import { Tour } from 'models/Tour';

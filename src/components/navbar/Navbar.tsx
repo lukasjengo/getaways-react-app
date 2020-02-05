@@ -13,7 +13,7 @@ import {
   StyledNav,
   LogoWrapperLink,
   StyledLink,
-  StyledButton,
+  StyledButton
 } from './styles';
 import { AppState } from 'redux/root-reducer';
 

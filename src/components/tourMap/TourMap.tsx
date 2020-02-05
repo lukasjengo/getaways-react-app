@@ -37,8 +37,8 @@ const MapLocation: React.FC<any> = ({ loc }) => {
 const TourMap: React.FC<TourMapProps> = ({ currentTour }) => {
   const [mapState, setMapState] = useState({
     viewport: {
-      zoom: 5,
-    },
+      zoom: 5
+    }
   });
   return (
     <ReactMapGL

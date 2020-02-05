@@ -1,6 +1,6 @@
-import {StartLocation} from './StartLocation'
-import {Guide} from './Guide'
-import {Location} from './Location'
+import { StartLocation } from './StartLocation';
+import { Guide } from './Guide';
+import { Location } from './Location';
 
 export interface Tour {
   _id: string;

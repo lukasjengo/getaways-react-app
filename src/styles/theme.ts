@@ -21,15 +21,15 @@ const myTheme: DefaultTheme = {
 
     white: '#ffffff',
     whiteBg: '#fafafa',
-    black: '#222629',
+    black: '#222629'
   },
 
   // SHADOWS
   shadows: {
     light1: '0 3px 1.7rem rgba(237, 234, 229, .6)',
     light2: '0 2px .5rem rgba(237, 234, 229, .6)',
-    dark1: '0 3px .5rem rgba(0, 0, 0, .3)',
-  },
+    dark1: '0 3px .5rem rgba(0, 0, 0, .3)'
+  }
 };
 
 export { myTheme };

@@ -21,7 +21,7 @@ import {
   FORGOT_PASSWORD_FAILURE,
   LOGOUT,
   DELETE_ACCOUNT,
-  AuthActionTypes,
+  AuthActionTypes
 } from './authTypes';
 import { RegisterForm } from 'models/RegisterForm';
 import { ForgotPasswordForm } from 'models/ForgotPasswordForm';
@@ -113,7 +113,7 @@ export const forgotPassword: ActionCreator<ThunkAction<
   } catch (err) {
     dispatch({
       type: FORGOT_PASSWORD_FAILURE,
-      payload: err.response.data.message,
+      payload: err.response.data.message
     });
     dispatch(setAlert(err.response.data.message, 'danger') as any);
   }

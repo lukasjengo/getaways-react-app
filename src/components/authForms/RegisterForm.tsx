@@ -25,7 +25,7 @@ const RegisterForm = () => {
           name: '',
           email: '',
           password: '',
-          passwordConfirm: '',
+          passwordConfirm: ''
         }}
         onSubmit={formData => {
           dispatch(register(formData));

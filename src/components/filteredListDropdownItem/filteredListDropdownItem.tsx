@@ -21,7 +21,7 @@ const FilteredListDropdownItem: React.SFC<FilteredListDropdownItemProps> = ({
   location,
   startDate,
   slug,
-  ratingsAverage,
+  ratingsAverage
 }) => (
   <StyledLi>
     <Link to={`/tour/${slug}-${id}`}>

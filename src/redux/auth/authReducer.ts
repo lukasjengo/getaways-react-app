@@ -10,7 +10,7 @@ import {
   FORGOT_PASSWORD_FAILURE,
   LOGOUT,
   DELETE_ACCOUNT,
-  AuthActionTypes,
+  AuthActionTypes
 } from './authTypes';
 import { User } from 'models/User';
 
@@ -25,7 +25,7 @@ const initialState: AuthState = {
   isAuthorized: null,
   user: null,
   isLoading: false,
-  error: null,
+  error: null
 };
 
 export default (state = initialState, action: AuthActionTypes): AuthState => {
@@ -35,7 +35,7 @@ export default (state = initialState, action: AuthActionTypes): AuthState => {
     case FORGOT_PASSWORD_REQUEST:
       return {
         ...state,
-        isLoading: true,
+        isLoading: true
       };
     case LOGIN_SUCCESS:
     case REGISTER_SUCCESS:
@@ -44,13 +44,13 @@ export default (state = initialState, action: AuthActionTypes): AuthState => {
         isAuthorized: true,
         user: action.payload,
         isLoading: false,
-        error: null,
+        error: null
       };
     case FORGOT_PASSWORD_SUCCESS:
       return {
         ...state,
         isLoading: false,
-        error: null,
+        error: null
       };
     case LOGIN_FAILURE:
     case REGISTER_FAILURE:
@@ -60,7 +60,7 @@ export default (state = initialState, action: AuthActionTypes): AuthState => {
         isAuthorized: false,
         user: null,
         isLoading: false,
-        error: action.payload,
+        error: action.payload
       };
     default:
       return state;

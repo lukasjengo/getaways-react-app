@@ -20,7 +20,7 @@ const CardListItem: React.SFC<CardListItemProps> = ({
   imageCover,
   summary,
   slug,
-  ratingsAverage,
+  ratingsAverage
 }) => (
   <StyledListItem>
     <Link to={`/tour/${slug}-${id}`}>

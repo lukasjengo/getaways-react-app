@@ -12,7 +12,7 @@ import {
   GET_CURRENT_TOUR_SUCCESS,
   GET_CURRENT_TOUR_FAILURE,
   GET_FILTER_TEXT,
-  TourActionTypes,
+  TourActionTypes
 } from './tourTypes';
 
 export const getTours: ActionCreator<ThunkAction<
@@ -27,12 +27,12 @@ export const getTours: ActionCreator<ThunkAction<
     const data = res.data.data.data;
     dispatch({
       type: GET_TOURS_SUCCESS,
-      payload: data,
+      payload: data
     });
   } catch (err) {
     dispatch({
       type: GET_TOURS_FAILURE,
-      payload: err.response.data.message,
+      payload: err.response.data.message
     });
   }
 };
@@ -49,17 +49,17 @@ export const getCurrentTour: ActionCreator<ThunkAction<
     const data = res.data.data.data;
     dispatch({
       type: GET_CURRENT_TOUR_SUCCESS,
-      payload: data,
+      payload: data
     });
   } catch (err) {
     dispatch({
       type: GET_CURRENT_TOUR_FAILURE,
-      payload: err.response.data.message,
+      payload: err.response.data.message
     });
   }
 };
 
 export const getFilterText = (text: string): TourActionTypes => ({
   type: GET_FILTER_TEXT,
-  payload: text.toLowerCase(),
+  payload: text.toLowerCase()
 });

@@ -7,7 +7,7 @@ import {
   GET_CURRENT_TOUR_SUCCESS,
   GET_CURRENT_TOUR_FAILURE,
   GET_FILTER_TEXT,
-  TourActionTypes,
+  TourActionTypes
 } from './tourTypes';
 
 export interface TourState {
@@ -24,10 +24,10 @@ const initialState: TourState = {
   allTours: [],
   currentTour: null,
   filter: {
-    text: '',
+    text: ''
   },
   isLoading: false,
-  error: null,
+  error: null
 };
 
 export default (state = initialState, action: TourActionTypes): TourState => {
@@ -36,31 +36,31 @@ export default (state = initialState, action: TourActionTypes): TourState => {
     case GET_CURRENT_TOUR_REQUEST:
       return {
         ...state,
-        isLoading: true,
+        isLoading: true
       };
     case GET_TOURS_SUCCESS:
       return {
         ...state,
         allTours: action.payload,
-        isLoading: false,
+        isLoading: false
       };
     case GET_CURRENT_TOUR_SUCCESS:
       return {
         ...state,
         currentTour: action.payload,
-        isLoading: false,
+        isLoading: false
       };
     case GET_TOURS_FAILURE:
     case GET_CURRENT_TOUR_FAILURE:
       return {
         ...state,
         isLoading: false,
-        error: action.payload,
+        error: action.payload
       };
     case GET_FILTER_TEXT:
       return {
         ...state,
-        filter: { ...state.filter, text: action.payload },
+        filter: { ...state.filter, text: action.payload }
       };
     default:
       return state;
