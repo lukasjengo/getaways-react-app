@@ -1,11 +1,10 @@
-import { ModalTypes } from 'models/Modal';
+import { FormTypes } from 'models/Modal';
 
-import { SHOW_MODAL, HIDE_MODAL, ModalActionTypes } from './modalTypes';
+import { SHOW_MODAL_FORM, HIDE_MODAL, ModalActionTypes } from './modalTypes';
 
-// Modal types: 'login' 'register' 'forgotpassword'
-export const showModal = (modalType: ModalTypes): ModalActionTypes => ({
-  type: SHOW_MODAL,
-  payload: modalType
+export const showModalForm = (formType: FormTypes): ModalActionTypes => ({
+  type: SHOW_MODAL_FORM,
+  payload: formType
 });
 
 export const hideModal = (): ModalActionTypes => ({

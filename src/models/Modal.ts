@@ -1,5 +1,6 @@
-export type ModalTypes = 'login' | 'register' | 'forgot-password';
+export type FormTypes = 'login' | 'register' | 'forgot-password';
 
 export interface Modal {
-  modalType: ModalTypes | null;
+  visible: boolean;
+  formType?: FormTypes | null;
 }

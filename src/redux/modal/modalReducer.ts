@@ -1,21 +1,24 @@
-import { Modal as ModalState } from 'models/Modal';
-import { SHOW_MODAL, HIDE_MODAL, ModalActionTypes } from './modalTypes';
+import { Modal } from 'models/Modal';
+import { SHOW_MODAL_FORM, HIDE_MODAL, ModalActionTypes } from './modalTypes';
 
-const initialState: ModalState = {
-  modalType: null
+const initialState: Modal = {
+  visible: false,
+  formType: null
 };
 
-export default (state = initialState, action: ModalActionTypes): ModalState => {
+export default (state = initialState, action: ModalActionTypes): Modal => {
   switch (action.type) {
-    case SHOW_MODAL:
+    case SHOW_MODAL_FORM:
       return {
         ...state,
-        modalType: action.payload
+        visible: true,
+        formType: action.payload
       };
     case HIDE_MODAL:
       return {
         ...state,
-        modalType: null
+        visible: false,
+        formType: null
       };
     default:
       return state;

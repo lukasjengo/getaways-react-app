@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 
-import { showModal } from 'redux/modal/modalActions';
+import { showModalForm } from 'redux/modal/modalActions';
 
 import SearchInput from 'components/searchInput/SearchInput';
 import CustomIcon from 'components/customIcon/CustomIcon';
@@ -38,7 +38,7 @@ const Navbar: React.FC = () => {
             <span>{auth.user.name.split(' ')[0]}</span>
           </StyledLink>
         ) : (
-          <StyledButton onClick={() => dispatch(showModal('login'))}>
+          <StyledButton onClick={() => dispatch(showModalForm('login'))}>
             <CustomIcon name="icon-user" />
             <span>Log in</span>
           </StyledButton>

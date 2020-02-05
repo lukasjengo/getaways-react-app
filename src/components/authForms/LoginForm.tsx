@@ -1,13 +1,13 @@
 import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { Field, Formik } from 'formik';
+import { useForm } from 'hooks/useForm';
 
 import CustomButton from 'components/customButton/CustomButton';
 import Spinner from 'components/spinner/Spinner';
 
 import { login } from 'redux/auth/authActions';
-import { showModal } from 'redux/modal/modalActions';
+import { showModalForm } from 'redux/modal/modalActions';
 
 import { FormWrapper, StyledForm, StyledDiv, InputWrapper } from './styles';
 import { HeadingSecondary } from 'styles/typography';
@@ -18,58 +18,53 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector((state: AppState) => state.auth.isLoading);
 
+  const [handleChange, handleSubmit, formData] = useForm(
+    { email: '', password: '' },
+    login
+  );
+
   return (
     <FormWrapper>
-      <Formik
-        initialValues={{ email: '', password: '' }}
-        onSubmit={formData => {
-          dispatch(login(formData));
-        }}
-      >
-        {({ values, handleChange, handleSubmit }) => (
-          <StyledForm onSubmit={handleSubmit}>
-            <HeadingSecondary>Login</HeadingSecondary>
-            <InputWrapper>
-              <label htmlFor="email">Email</label>
-              <Field
-                onChange={handleChange}
-                value={values.email}
-                type="email"
-                name="email"
-                placeholder="example@email.com"
-                required={true}
-                id="email"
-              />
-            </InputWrapper>
-            <InputWrapper>
-              <label htmlFor="password">Password</label>
-              <Field
-                onChange={handleChange}
-                value={values.password}
-                type="password"
-                name="password"
-                placeholder="••••••••"
-                required={true}
-                minLength="8"
-                id="password"
-              />
-            </InputWrapper>
-            <CustomButton color="primary" type="submit">
-              {isLoading ? <Spinner size="small" color="whiteBg" /> : 'Login'}
-            </CustomButton>
-          </StyledForm>
-        )}
-      </Formik>
+      <StyledForm onSubmit={handleSubmit}>
+        <HeadingSecondary>Login</HeadingSecondary>
+        <InputWrapper>
+          <label htmlFor="email">Email</label>
+          <input
+            onChange={handleChange}
+            value={formData.email}
+            type="email"
+            name="email"
+            placeholder="example@email.com"
+            required={true}
+            id="email"
+          />
+        </InputWrapper>
+        <InputWrapper>
+          <label htmlFor="password">Password</label>
+          <input
+            onChange={handleChange}
+            value={formData.password}
+            type="password"
+            name="password"
+            placeholder="••••••••"
+            required={true}
+            id="password"
+          />
+        </InputWrapper>
+        <CustomButton color="primary" type="submit">
+          {isLoading ? <Spinner size="small" color="whiteBg" /> : 'Login'}
+        </CustomButton>
+      </StyledForm>
       <StyledDiv>
         <CustomButton
           isUnderlined={true}
-          onClick={() => dispatch(showModal('register'))}
+          onClick={() => dispatch(showModalForm('register'))}
         >
           Don't have an account? Register here.
         </CustomButton>
         <CustomButton
           isUnderlined={true}
-          onClick={() => dispatch(showModal('forgot-password'))}
+          onClick={() => dispatch(showModalForm('forgot-password'))}
         >
           Forgot password? Reset it here.
         </CustomButton>

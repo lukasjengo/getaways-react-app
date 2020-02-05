@@ -3,20 +3,18 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { hideModal } from 'redux/modal/modalActions';
 
-import LoginForm from 'components/authForms/LoginForm';
-import RegisterForm from 'components/authForms/RegisterForm';
-import ForgotPasswordForm from 'components/authForms/ForgotPasswordForm';
+import ModalForm from './ModalForm';
 
 import { ModalOverlay } from './styles';
 import { AppState } from 'redux/root-reducer';
 
 const Modal: React.FC = () => {
-  const modalType = useSelector((state: AppState) => state.modal.modalType);
+  const visible = useSelector((state: AppState) => state.modal.visible);
   const dispatch = useDispatch();
   const modalNode = useRef(null);
 
   useEffect(() => {
-    if (modalType !== null) {
+    if (visible) {
       document.addEventListener('mousedown', handleClickOutside);
     } else {
       document.removeEventListener('mousedown', handleClickOutside);
@@ -25,7 +23,7 @@ const Modal: React.FC = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
     //eslint-disable-next-line
-  }, [modalType]);
+  }, [visible]);
 
   const handleClickOutside = (e: MouseEvent) => {
     if (modalNode.current === e.target) {
@@ -34,15 +32,11 @@ const Modal: React.FC = () => {
     }
   };
 
-  if (modalType === null) return null;
-
-  return (
+  return visible ? (
     <ModalOverlay ref={modalNode}>
-      {modalType === 'login' && <LoginForm />}
-      {modalType === 'register' && <RegisterForm />}
-      {modalType === 'forgot-password' && <ForgotPasswordForm />}
+      <ModalForm />
     </ModalOverlay>
-  );
+  ) : null;
 };
 
 export default Modal;
