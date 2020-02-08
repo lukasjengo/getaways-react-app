@@ -9,13 +9,6 @@ import userEvent from '@testing-library/user-event';
 import ForgotPasswordForm from 'components/authForms/ForgotPasswordForm';
 import { FORGOT_PASSWORD_REQUEST } from 'redux/auth/authTypes';
 
-const forgotPassword: jest.Mock = require('redux/auth/authActions')
-  .forgotPassword;
-
-jest.mock('redux/auth/authActions', () => ({
-  forgotPassword: jest.fn()
-}));
-
 describe('ForgotPasswordForm component', () => {
   let wrapper: ReturnType<typeof render>;
 
@@ -69,31 +62,5 @@ describe('ForgotPasswordForm component', () => {
 
       expect(getByTestId('loading-spinner')).toBeInTheDocument();
     });
-
-    test('thunk action is called correctly', async () => {
-      const { getByLabelText, getByText } = wrapper;
-      await wait(() =>
-        userEvent.type(getByLabelText(/email/i), 'lukasjanonis@gmail.com')
-      );
-      const submitBtn = getByText(/reset password/i);
-
-      await wait(() => userEvent.click(submitBtn));
-
-      expect(forgotPassword).toHaveBeenCalledTimes(1);
-      expect(forgotPassword).toHaveBeenCalledWith({
-        email: 'lukasjanonis@gmail.com'
-      });
-    });
-
-    // test('thunk error action is called', () => {
-    //   forgotPassword.mockRejectedValue('Fail!');
-    //   expect(forgotPassword).toHaveBeenCalledTimes(1);
-    //   expect(forgotPassword).toHaveBeenCalledWith({
-    //     email: 'Fail!',
-    //   });
-    // });
   });
 });
-
-// TRY TESTING FORM WITHOUT FORMIK
-// TRY TESTING BY CHANGING STATE MANUALLY
