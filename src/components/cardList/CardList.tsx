@@ -4,7 +4,7 @@ import { useSelector, shallowEqual } from 'react-redux';
 import CardListItem from 'components/cardListItem/CardListItem';
 
 import { StyledList } from './styles';
-import { AppState } from 'redux/root-reducer';
+import { AppState } from 'redux/rootReducer';
 
 const CardList: React.FC = () => {
   const tours = useSelector(

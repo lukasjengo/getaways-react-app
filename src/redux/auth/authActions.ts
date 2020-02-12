@@ -26,29 +26,46 @@ import {
 import { RegisterForm } from 'models/RegisterForm';
 import { ForgotPasswordForm } from 'models/ForgotPasswordForm';
 
-axios.defaults.withCredentials = true;
+export const loginRequest: ActionCreator<AuthActionTypes> = (
+  formData: LoginForm
+) => ({
+  type: LOGIN_REQUEST,
+  payload: formData
+});
 
-export const login: ActionCreator<ThunkAction<
-  Promise<AuthActionTypes>,
-  User | string,
-  LoginForm,
-  AuthActionTypes
->> = (formData: LoginForm) => async (dispatch: Dispatch<AppActions>) => {
-  dispatch({ type: LOGIN_REQUEST });
-  try {
-    const res = await axios.post(
-      `${process.env.REACT_APP_API_URL}/users/login`,
-      formData
-    );
-    dispatch(hideModal());
-    dispatch(setAlert('Login successful', 'success') as any);
-    return dispatch({ type: LOGIN_SUCCESS, payload: res.data.data.user });
-  } catch (err) {
-    dispatch({ type: LOGIN_FAILURE, payload: err.response.data.message });
-    // USE RETURN SO THAT THUNKACTION PROMISE CAN BE CORRECT ACTION TYPE RATHER THAN VOID
-    return dispatch(setAlert(err.response.data.message, 'danger') as any);
-  }
-};
+export const loginSuccess: ActionCreator<AuthActionTypes> = (user: User) => ({
+  type: LOGIN_SUCCESS,
+  payload: user
+});
+
+export const loginFailure: ActionCreator<AuthActionTypes> = (
+  error: string
+) => ({
+  type: LOGIN_FAILURE,
+  payload: error
+});
+
+// export const login: ActionCreator<ThunkAction<
+//   Promise<AuthActionTypes>,
+//   User | string,
+//   LoginForm,
+//   AuthActionTypes
+// >> = (formData: LoginForm) => async (dispatch: Dispatch<AppActions>) => {
+//   // dispatch({ type: LOGIN_REQUEST });
+//   try {
+//     const res = await axios.post(
+//       `${process.env.REACT_APP_API_URL}/users/login`,
+//       formData
+//     );
+//     dispatch(hideModal());
+//     dispatch(setAlert('Login successful', 'success') as any);
+//     return dispatch({ type: LOGIN_SUCCESS, payload: res.data.data.user });
+//   } catch (err) {
+//     dispatch({ type: LOGIN_FAILURE, payload: err.response.data.message });
+//     // USE RETURN SO THAT THUNKACTION PROMISE CAN BE CORRECT ACTION TYPE RATHER THAN VOID
+//     return dispatch(setAlert(err.response.data.message, 'danger') as any);
+//   }
+// };
 
 export const isLoggedIn: ActionCreator<ThunkAction<
   Promise<void>,
@@ -56,7 +73,7 @@ export const isLoggedIn: ActionCreator<ThunkAction<
   null,
   AuthActionTypes
 >> = () => async (dispatch: Dispatch<AuthActionTypes>) => {
-  dispatch({ type: LOGIN_REQUEST });
+  // dispatch({ type: LOGIN_REQUEST });
   try {
     const res = await axios.get(
       `${process.env.REACT_APP_API_URL}/users/isloggedin`

@@ -23,7 +23,9 @@ export interface GetToursFailureAction
 }
 
 export interface GetCurrentTourRequestAction
-  extends Action<typeof GET_CURRENT_TOUR_REQUEST> {}
+  extends Action<typeof GET_CURRENT_TOUR_REQUEST> {
+  payload: string;
+}
 
 export interface GetCurrentTourSuccessAction
   extends Action<typeof GET_CURRENT_TOUR_SUCCESS> {

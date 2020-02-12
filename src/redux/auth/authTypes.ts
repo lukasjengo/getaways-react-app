@@ -1,5 +1,6 @@
 import { Action } from 'redux';
 import { User } from 'models/User';
+import { LoginForm } from 'models/LoginForm';
 
 export const REGISTER_REQUEST = 'REGISTER_REQUEST';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
@@ -24,7 +25,9 @@ export interface RegisterFailureAction extends Action<typeof REGISTER_FAILURE> {
   payload: string;
 }
 
-export interface LoginRequestAction extends Action<typeof LOGIN_REQUEST> {}
+export interface LoginRequestAction extends Action<typeof LOGIN_REQUEST> {
+  payload: LoginForm;
+}
 
 export interface LoginSuccessAction extends Action<typeof LOGIN_SUCCESS> {
   payload: User;

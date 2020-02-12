@@ -6,7 +6,7 @@ import { hideModal } from 'redux/modal/modalActions';
 import ModalForm from './ModalForm';
 
 import { ModalOverlay } from './styles';
-import { AppState } from 'redux/root-reducer';
+import { AppState } from 'redux/rootReducer';
 
 const Modal: React.FC = () => {
   const visible = useSelector((state: AppState) => state.modal.visible);

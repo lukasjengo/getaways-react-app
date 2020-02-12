@@ -12,7 +12,7 @@ import { showModalForm } from 'redux/modal/modalActions';
 import { FormWrapper, StyledForm, StyledDiv, InputWrapper } from './styles';
 import { HeadingSecondary } from 'styles/typography';
 
-import { AppState } from 'redux/root-reducer';
+import { AppState } from 'redux/rootReducer';
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
