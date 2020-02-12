@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  getawapp:
+    container_name: getawapp
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/client'
+      - '/app/node_modules'
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
