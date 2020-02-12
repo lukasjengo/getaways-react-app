@@ -9,7 +9,7 @@ const Alert: React.FC = () => {
   return (
     <AlertWrapper>
       {alerts.map(alert => (
-        <StyledAlert key={alert.id} type={alert.alertType}>
+        <StyledAlert key={alert.id} type={alert.alertType} data-testid="alert">
           {alert.msg}
         </StyledAlert>
       ))}
