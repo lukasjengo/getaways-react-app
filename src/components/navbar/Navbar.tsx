@@ -15,7 +15,7 @@ import {
   StyledLink,
   StyledButton
 } from './styles';
-import { AppState } from 'redux/root-reducer';
+import { AppState } from 'redux/rootReducer';
 
 const Navbar: React.FC = () => {
   const auth = useSelector((state: AppState) => state.auth, shallowEqual);

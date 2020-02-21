@@ -1,7 +1,7 @@
 import React, { useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
 
-import { getCurrentTour } from 'redux/tour/tourActions';
+import { getCurrentTourRequest } from 'redux/tour/tourActions';
 
 import ImageGallery from 'components/imageGallery/ImageGallery';
 import TourCtaBar from 'components/tourCtaBar/TourCtaBar';
@@ -17,13 +17,13 @@ import {
 } from './styles';
 import { HeadingPrimary, HeadingSecondary, Paragraph } from 'styles/typography';
 
-const Tourpage = ({ match, currentTour, getCurrentTour, isLoading }) => {
+const Tourpage = ({ match, currentTour, getCurrentTourRequest, isLoading }) => {
   const tourId = match.params.slug.substring(
     match.params.slug.lastIndexOf('-') + 1
   );
   useEffect(() => {
     if (currentTour === null || currentTour.id !== tourId)
-      getCurrentTour(tourId);
+      getCurrentTourRequest(tourId);
     //eslint-disable-next-line
   }, [tourId]);
 
@@ -82,4 +82,4 @@ const mapStateToProps = state => ({
   isLoading: state.tour.isLoading
 });
 
-export default connect(mapStateToProps, { getCurrentTour })(Tourpage);
+export default connect(mapStateToProps, { getCurrentTourRequest })(Tourpage);

@@ -6,13 +6,13 @@ import { useForm } from 'hooks/useForm';
 import CustomButton from 'components/customButton/CustomButton';
 import Spinner from 'components/spinner/Spinner';
 
-import { register } from 'redux/auth/authActions';
+import { registerRequest } from 'redux/auth/authActions';
 import { showModalForm } from 'redux/modal/modalActions';
 
 import { FormWrapper, StyledForm, StyledDiv, InputWrapper } from './styles';
 import { HeadingSecondary } from 'styles/typography';
 
-import { AppState } from 'redux/root-reducer';
+import { AppState } from 'redux/rootReducer';
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const RegisterForm = () => {
 
   const [handleChange, handleSubmit, formData] = useForm(
     { name: '', email: '', password: '', passwordConfirm: '' },
-    register
+    registerRequest as any
   );
 
   return (

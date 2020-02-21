@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'hooks/useForm';
 
-import { forgotPassword } from 'redux/auth/authActions';
+import { forgotPasswordRequest } from 'redux/auth/authActions';
 import { showModalForm } from 'redux/modal/modalActions';
 
 import CustomButton from 'components/customButton/CustomButton';
@@ -11,7 +11,7 @@ import Spinner from 'components/spinner/Spinner';
 import { FormWrapper, StyledForm, StyledDiv, InputWrapper } from './styles';
 import { HeadingSecondary } from 'styles/typography';
 
-import { AppState } from 'redux/root-reducer';
+import { AppState } from 'redux/rootReducer';
 
 const ForgotPasswordForm: React.FC = () => {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const ForgotPasswordForm: React.FC = () => {
 
   const [handleChange, handleSubmit, formData] = useForm(
     { email: '' },
-    forgotPassword
+    forgotPasswordRequest as any
   );
 
   return (

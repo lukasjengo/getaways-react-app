@@ -6,13 +6,13 @@ import { useForm } from 'hooks/useForm';
 import CustomButton from 'components/customButton/CustomButton';
 import Spinner from 'components/spinner/Spinner';
 
-import { login } from 'redux/auth/authActions';
+import { loginRequest } from 'redux/auth/authActions';
 import { showModalForm } from 'redux/modal/modalActions';
 
 import { FormWrapper, StyledForm, StyledDiv, InputWrapper } from './styles';
 import { HeadingSecondary } from 'styles/typography';
 
-import { AppState } from 'redux/root-reducer';
+import { AppState } from 'redux/rootReducer';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const LoginForm = () => {
 
   const [handleChange, handleSubmit, formData] = useForm(
     { email: '', password: '' },
-    login
+    loginRequest as any
   );
 
   return (

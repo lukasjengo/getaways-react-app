@@ -4,7 +4,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { myTheme } from 'styles/theme';
-import rootReducer from 'redux/root-reducer';
+import rootReducer from 'redux/rootReducer';
 import thunk from 'redux-thunk';
 
 const customRender = (

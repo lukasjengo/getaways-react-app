@@ -6,7 +6,7 @@ import { selectFilteredTours } from 'redux/tour/tourSelectors';
 import FilteredListDropdownItem from 'components/filteredListDropdownItem/filteredListDropdownItem';
 
 import { ModalWrapper } from './styles';
-import { AppState } from 'redux/root-reducer';
+import { AppState } from 'redux/rootReducer';
 
 const FilteredListDropdown = () => {
   const filteredTours = useSelector(

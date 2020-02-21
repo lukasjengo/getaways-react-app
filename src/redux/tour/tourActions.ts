@@ -1,9 +1,3 @@
-import axios from 'axios';
-
-import { ActionCreator, Dispatch } from 'redux';
-import { ThunkAction } from 'redux-thunk';
-import { Tour } from 'models/Tour';
-
 import {
   GET_TOURS_REQUEST,
   GET_TOURS_SUCCESS,
@@ -15,49 +9,36 @@ import {
   TourActionTypes
 } from './tourTypes';
 
-export const getTours: ActionCreator<ThunkAction<
-  Promise<void>,
-  Tour[] | string,
-  null,
-  TourActionTypes
->> = () => async (dispatch: Dispatch<TourActionTypes>) => {
-  dispatch({ type: GET_TOURS_REQUEST });
-  try {
-    const res = await axios.get(`${process.env.REACT_APP_API_URL}/tours`);
-    const data = res.data.data.data;
-    dispatch({
-      type: GET_TOURS_SUCCESS,
-      payload: data
-    });
-  } catch (err) {
-    dispatch({
-      type: GET_TOURS_FAILURE,
-      payload: err.response.data.message
-    });
-  }
-};
+import { Tour } from 'models/Tour';
 
-export const getCurrentTour: ActionCreator<ThunkAction<
-  Promise<void>,
-  Tour | string,
-  string,
-  TourActionTypes
->> = id => async (dispatch: Dispatch<TourActionTypes>) => {
-  dispatch({ type: GET_CURRENT_TOUR_REQUEST });
-  try {
-    const res = await axios.get(`${process.env.REACT_APP_API_URL}/tours/${id}`);
-    const data = res.data.data.data;
-    dispatch({
-      type: GET_CURRENT_TOUR_SUCCESS,
-      payload: data
-    });
-  } catch (err) {
-    dispatch({
-      type: GET_CURRENT_TOUR_FAILURE,
-      payload: err.response.data.message
-    });
-  }
-};
+export const getToursRequest = (): TourActionTypes => ({
+  type: GET_TOURS_REQUEST
+});
+
+export const getToursSuccess = (tours: Tour[]): TourActionTypes => ({
+  type: GET_TOURS_SUCCESS,
+  payload: tours
+});
+
+export const getToursFailure = (error: string): TourActionTypes => ({
+  type: GET_TOURS_FAILURE,
+  payload: error
+});
+
+export const getCurrentTourRequest = (id: string): TourActionTypes => ({
+  type: GET_CURRENT_TOUR_REQUEST,
+  payload: id
+});
+
+export const getCurrentTourSuccess = (tour: Tour): TourActionTypes => ({
+  type: GET_CURRENT_TOUR_SUCCESS,
+  payload: tour
+});
+
+export const getCurrentTourFailure = (error: string): TourActionTypes => ({
+  type: GET_CURRENT_TOUR_FAILURE,
+  payload: error
+});
 
 export const getFilterText = (text: string): TourActionTypes => ({
   type: GET_FILTER_TEXT,

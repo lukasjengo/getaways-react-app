@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { AppState } from 'redux/root-reducer';
+import { AppState } from 'redux/rootReducer';
 
 const selectTour = (state: AppState) => state.tour;
 

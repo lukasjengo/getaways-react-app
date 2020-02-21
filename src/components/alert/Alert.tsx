@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
 
 import { AlertWrapper, StyledAlert } from './styles';
-import { AppState } from 'redux/root-reducer';
+import { AppState } from 'redux/rootReducer';
 
 const Alert: React.FC = () => {
   const alerts = useSelector((state: AppState) => state.alerts, shallowEqual);
