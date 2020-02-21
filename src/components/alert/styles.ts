@@ -4,7 +4,7 @@ import { AlertTypes } from 'models/Alert';
 export const AlertWrapper = styled.div`
   position: fixed;
   top: 7.5rem;
-  right: 6rem;
+  left: 6rem;
   z-index: 9999;
   font-size: 1.5rem;
 `;

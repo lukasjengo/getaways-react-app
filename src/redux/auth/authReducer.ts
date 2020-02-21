@@ -8,8 +8,6 @@ import {
   FORGOT_PASSWORD_REQUEST,
   FORGOT_PASSWORD_SUCCESS,
   FORGOT_PASSWORD_FAILURE,
-  LOGOUT,
-  DELETE_ACCOUNT,
   AuthActionTypes
 } from './authTypes';
 import { User } from 'models/User';

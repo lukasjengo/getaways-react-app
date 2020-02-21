@@ -1,5 +1,3 @@
-import { ActionCreator } from 'redux';
-
 import {
   GET_TOURS_REQUEST,
   GET_TOURS_SUCCESS,
@@ -13,48 +11,36 @@ import {
 
 import { Tour } from 'models/Tour';
 
-export const getToursRequest: ActionCreator<TourActionTypes> = () => ({
+export const getToursRequest = (): TourActionTypes => ({
   type: GET_TOURS_REQUEST
 });
 
-export const getToursSuccess: ActionCreator<TourActionTypes> = (
-  tours: Tour[]
-) => ({
+export const getToursSuccess = (tours: Tour[]): TourActionTypes => ({
   type: GET_TOURS_SUCCESS,
   payload: tours
 });
 
-export const getToursFailure: ActionCreator<TourActionTypes> = (
-  error: string
-) => ({
+export const getToursFailure = (error: string): TourActionTypes => ({
   type: GET_TOURS_FAILURE,
   payload: error
 });
 
-export const getCurrentTourRequest: ActionCreator<TourActionTypes> = (
-  id: string
-) => ({
+export const getCurrentTourRequest = (id: string): TourActionTypes => ({
   type: GET_CURRENT_TOUR_REQUEST,
   payload: id
 });
 
-export const getCurrentTourSuccess: ActionCreator<TourActionTypes> = (
-  tour: Tour
-) => ({
+export const getCurrentTourSuccess = (tour: Tour): TourActionTypes => ({
   type: GET_CURRENT_TOUR_SUCCESS,
   payload: tour
 });
 
-export const getCurrentTourFailure: ActionCreator<TourActionTypes> = (
-  error: string
-) => ({
+export const getCurrentTourFailure = (error: string): TourActionTypes => ({
   type: GET_CURRENT_TOUR_FAILURE,
   payload: error
 });
 
-export const getFilterText: ActionCreator<TourActionTypes> = (
-  text: string
-) => ({
+export const getFilterText = (text: string): TourActionTypes => ({
   type: GET_FILTER_TEXT,
   payload: text.toLowerCase()
 });

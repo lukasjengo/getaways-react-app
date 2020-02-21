@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'hooks/useForm';
 
-import { forgotPassword } from 'redux/auth/authActions';
+import { forgotPasswordRequest } from 'redux/auth/authActions';
 import { showModalForm } from 'redux/modal/modalActions';
 
 import CustomButton from 'components/customButton/CustomButton';
@@ -19,7 +19,7 @@ const ForgotPasswordForm: React.FC = () => {
 
   const [handleChange, handleSubmit, formData] = useForm(
     { email: '' },
-    forgotPassword
+    forgotPasswordRequest as any
   );
 
   return (

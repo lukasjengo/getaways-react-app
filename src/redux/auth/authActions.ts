@@ -1,13 +1,5 @@
-import axios from 'axios';
-
-import { ActionCreator, Dispatch } from 'redux';
-import { ThunkAction } from 'redux-thunk';
 import { User } from 'models/User';
-import { AppActions } from 'redux/AppActions';
 import { LoginForm } from 'models/LoginForm';
-
-import { setAlert } from 'redux/alert/alertActions';
-import { hideModal } from 'redux/modal/modalActions';
 
 import {
   REGISTER_REQUEST,
@@ -19,119 +11,58 @@ import {
   FORGOT_PASSWORD_REQUEST,
   FORGOT_PASSWORD_SUCCESS,
   FORGOT_PASSWORD_FAILURE,
-  LOGOUT,
-  DELETE_ACCOUNT,
-  AuthActionTypes
+  AuthActionTypes,
+  ISLOGGEDIN_REQUEST
 } from './authTypes';
 import { RegisterForm } from 'models/RegisterForm';
 import { ForgotPasswordForm } from 'models/ForgotPasswordForm';
 
-export const loginRequest: ActionCreator<AuthActionTypes> = (
-  formData: LoginForm
-) => ({
+export const loginRequest = (formData: LoginForm): AuthActionTypes => ({
   type: LOGIN_REQUEST,
   payload: formData
 });
 
-export const loginSuccess: ActionCreator<AuthActionTypes> = (user: User) => ({
+export const loginSuccess = (user: User): AuthActionTypes => ({
   type: LOGIN_SUCCESS,
   payload: user
 });
 
-export const loginFailure: ActionCreator<AuthActionTypes> = (
-  error: string
-) => ({
+export const loginFailure = (error: string): AuthActionTypes => ({
   type: LOGIN_FAILURE,
   payload: error
 });
 
-// export const login: ActionCreator<ThunkAction<
-//   Promise<AuthActionTypes>,
-//   User | string,
-//   LoginForm,
-//   AuthActionTypes
-// >> = (formData: LoginForm) => async (dispatch: Dispatch<AppActions>) => {
-//   // dispatch({ type: LOGIN_REQUEST });
-//   try {
-//     const res = await axios.post(
-//       `${process.env.REACT_APP_API_URL}/users/login`,
-//       formData
-//     );
-//     dispatch(hideModal());
-//     dispatch(setAlert('Login successful', 'success') as any);
-//     return dispatch({ type: LOGIN_SUCCESS, payload: res.data.data.user });
-//   } catch (err) {
-//     dispatch({ type: LOGIN_FAILURE, payload: err.response.data.message });
-//     // USE RETURN SO THAT THUNKACTION PROMISE CAN BE CORRECT ACTION TYPE RATHER THAN VOID
-//     return dispatch(setAlert(err.response.data.message, 'danger') as any);
-//   }
-// };
+export const isLoggedInRequest = (): AuthActionTypes => ({
+  type: ISLOGGEDIN_REQUEST
+});
 
-export const isLoggedIn: ActionCreator<ThunkAction<
-  Promise<void>,
-  User | string,
-  null,
-  AuthActionTypes
->> = () => async (dispatch: Dispatch<AuthActionTypes>) => {
-  // dispatch({ type: LOGIN_REQUEST });
-  try {
-    const res = await axios.get(
-      `${process.env.REACT_APP_API_URL}/users/isloggedin`
-    );
-    dispatch({ type: LOGIN_SUCCESS, payload: res.data.data.user });
-  } catch (err) {
-    dispatch({ type: LOGIN_FAILURE, payload: err.response.data.message });
-  }
-};
+export const registerRequest = (formData: RegisterForm): AuthActionTypes => ({
+  type: REGISTER_REQUEST,
+  payload: formData
+});
 
-export const register: ActionCreator<ThunkAction<
-  Promise<void>,
-  User | string,
-  RegisterForm,
-  AuthActionTypes
->> = (formData: RegisterForm) => async (dispatch: Dispatch<AppActions>) => {
-  dispatch({ type: REGISTER_REQUEST });
-  try {
-    const res = await axios.post(
-      `${process.env.REACT_APP_API_URL}/users/signup`,
-      formData
-    );
-    dispatch(hideModal());
-    dispatch(setAlert('Registration successful', 'success') as any);
-    dispatch({ type: REGISTER_SUCCESS, payload: res.data.data.user });
-  } catch (err) {
-    dispatch({ type: REGISTER_FAILURE, payload: err.response.data.message });
-    dispatch(setAlert(err.response.data.message, 'danger') as any);
-  }
-};
+export const registerSuccess = (user: User): AuthActionTypes => ({
+  type: REGISTER_SUCCESS,
+  payload: user
+});
 
-export const forgotPassword: ActionCreator<ThunkAction<
-  Promise<void>,
-  null,
-  ForgotPasswordForm,
-  AuthActionTypes
->> = (formData: ForgotPasswordForm) => async (
-  dispatch: Dispatch<AppActions>
-) => {
-  dispatch({ type: FORGOT_PASSWORD_REQUEST });
-  try {
-    await axios.post(
-      `${process.env.REACT_APP_API_URL}/users/forgotpassword`,
-      formData
-    );
-    dispatch(hideModal());
-    dispatch({ type: FORGOT_PASSWORD_SUCCESS });
-    dispatch(
-      setAlert(
-        'Pasword reset instructions were sent to your email',
-        'success'
-      ) as any
-    );
-  } catch (err) {
-    dispatch({
-      type: FORGOT_PASSWORD_FAILURE,
-      payload: err.response.data.message
-    });
-    dispatch(setAlert(err.response.data.message, 'danger') as any);
-  }
-};
+export const registerFailure = (error: string): AuthActionTypes => ({
+  type: REGISTER_FAILURE,
+  payload: error
+});
+
+export const forgotPasswordRequest = (
+  formData: ForgotPasswordForm
+): AuthActionTypes => ({
+  type: FORGOT_PASSWORD_REQUEST,
+  payload: formData
+});
+
+export const forgotPasswordSuccess = (): AuthActionTypes => ({
+  type: FORGOT_PASSWORD_SUCCESS
+});
+
+export const forgotPasswordFailure = (error: string): AuthActionTypes => ({
+  type: FORGOT_PASSWORD_FAILURE,
+  payload: error
+});

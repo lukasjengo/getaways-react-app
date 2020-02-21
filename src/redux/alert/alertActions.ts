@@ -1,26 +1,26 @@
-import uuid from 'uuid';
-import { Dispatch } from 'redux';
+import {
+  SET_ALERT,
+  REMOVE_ALERT,
+  AlertActionTypes,
+  SET_ALERT_WITH_TIMEOUT
+} from './alertTypes';
+import { Alert, AlertTypes } from 'models/Alert';
 
-import { SET_ALERT, REMOVE_ALERT, AlertActionTypes } from './alertTypes';
-
-export const setAlert = (
+export const setAlertWithTimeout = (
   msg: string,
-  alertType: 'danger' | 'success',
+  alertType: AlertTypes,
   timeout = 5000
-) => (dispatch: Dispatch<AlertActionTypes>) => {
-  const id = uuid.v4();
+): AlertActionTypes => ({
+  type: SET_ALERT_WITH_TIMEOUT,
+  payload: { msg, alertType, timeout }
+});
 
-  dispatch({
-    type: SET_ALERT,
-    payload: { msg, alertType, id }
-  });
+export const setAlert = (alert: Alert): AlertActionTypes => ({
+  type: SET_ALERT,
+  payload: alert
+});
 
-  setTimeout(
-    () =>
-      dispatch({
-        type: REMOVE_ALERT,
-        payload: id
-      }),
-    timeout
-  );
-};
+export const removeAlert = (id: string): AlertActionTypes => ({
+  type: REMOVE_ALERT,
+  payload: id
+});

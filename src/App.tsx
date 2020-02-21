@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 
+import { isLoggedInRequest } from 'redux/auth/authActions';
 import { getToursRequest } from 'redux/tour/tourActions';
 
 // Components
@@ -21,9 +22,8 @@ import { myTheme } from 'styles/theme';
 const App: React.FC = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    // dispatch(isLoggedIn());
+    dispatch(isLoggedInRequest());
     dispatch(getToursRequest());
-    // dispatch(getTours());
     //eslint-disable-next-line
   }, []);
   return (

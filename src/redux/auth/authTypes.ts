@@ -1,10 +1,13 @@
 import { Action } from 'redux';
 import { User } from 'models/User';
 import { LoginForm } from 'models/LoginForm';
+import { RegisterForm } from 'models/RegisterForm';
+import { ForgotPasswordForm } from 'models/ForgotPasswordForm';
 
 export const REGISTER_REQUEST = 'REGISTER_REQUEST';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAILURE = 'REGISTER_FAILURE';
+export const ISLOGGEDIN_REQUEST = 'ISLOGGEDIN_REQUEST';
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
@@ -14,8 +17,9 @@ export const FORGOT_PASSWORD_FAILURE = 'FORGOT_PASSWORD_FAILURE';
 export const LOGOUT = 'LOGOUT';
 export const DELETE_ACCOUNT = 'DELETE_ACCOUNT';
 
-export interface RegisterRequestAction
-  extends Action<typeof REGISTER_REQUEST> {}
+export interface RegisterRequestAction extends Action<typeof REGISTER_REQUEST> {
+  payload: RegisterForm;
+}
 
 export interface RegisterSuccessAction extends Action<typeof REGISTER_SUCCESS> {
   payload: User;
@@ -24,6 +28,8 @@ export interface RegisterSuccessAction extends Action<typeof REGISTER_SUCCESS> {
 export interface RegisterFailureAction extends Action<typeof REGISTER_FAILURE> {
   payload: string;
 }
+
+export interface IsLoggedInRequest extends Action<typeof ISLOGGEDIN_REQUEST> {}
 
 export interface LoginRequestAction extends Action<typeof LOGIN_REQUEST> {
   payload: LoginForm;
@@ -38,7 +44,9 @@ export interface LoginFailureAction extends Action<typeof LOGIN_FAILURE> {
 }
 
 export interface ForgotPasswordRequestAction
-  extends Action<typeof FORGOT_PASSWORD_REQUEST> {}
+  extends Action<typeof FORGOT_PASSWORD_REQUEST> {
+  payload: ForgotPasswordForm;
+}
 
 export interface ForgotPasswordSuccessAction
   extends Action<typeof FORGOT_PASSWORD_SUCCESS> {}
@@ -57,4 +65,5 @@ export type AuthActionTypes =
   | LoginFailureAction
   | ForgotPasswordRequestAction
   | ForgotPasswordSuccessAction
-  | ForgotPasswordFailureAction;
+  | ForgotPasswordFailureAction
+  | IsLoggedInRequest;
