@@ -4,7 +4,7 @@ import CardList from 'components/cardList/CardList';
 
 import { StyledMain, StyledSection } from './styles';
 
-const Homepage = () => {
+const Homepage: React.FC = () => {
   return (
     <StyledMain>
       <StyledSection>

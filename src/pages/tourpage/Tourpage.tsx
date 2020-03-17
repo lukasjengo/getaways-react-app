@@ -1,5 +1,6 @@
 import React, { useEffect, Fragment } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 import { getCurrentTourRequest } from 'redux/tour/tourActions';
 
@@ -17,15 +18,25 @@ import {
 } from './styles';
 import { HeadingPrimary, HeadingSecondary, Paragraph } from 'styles/typography';
 
-const Tourpage = ({ match, currentTour, getCurrentTourRequest, isLoading }) => {
-  const tourId = match.params.slug.substring(
-    match.params.slug.lastIndexOf('-') + 1
-  );
+import { AppState } from 'redux/rootReducer';
+
+const Tourpage: React.FC = () => {
+  const dispatch = useDispatch();
+
+  const { slug } = useParams();
+
+  const tourId = slug!.substring(slug!.lastIndexOf('-') + 1);
   useEffect(() => {
     if (currentTour === null || currentTour.id !== tourId)
-      getCurrentTourRequest(tourId);
+      dispatch(getCurrentTourRequest(tourId));
     //eslint-disable-next-line
   }, [tourId]);
+
+  const isLoading = useSelector((state: AppState) => state.tour.isLoading);
+  const currentTour = useSelector(
+    (state: AppState) => state.tour.currentTour,
+    shallowEqual
+  );
 
   return (
     <StyledMain>
@@ -77,9 +88,4 @@ const Tourpage = ({ match, currentTour, getCurrentTourRequest, isLoading }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  currentTour: state.tour.currentTour,
-  isLoading: state.tour.isLoading
-});
-
-export default connect(mapStateToProps, { getCurrentTourRequest })(Tourpage);
+export default Tourpage;
